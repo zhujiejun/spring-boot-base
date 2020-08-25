@@ -1,0 +1,42 @@
+spring:
+  profiles: dev
+server:
+  port: 12004
+  servlet:
+    context-path: /client
+eureka:
+  instance:
+    appname: service-004
+  client:
+    service-url:
+      defaultZone: http://192.168.100.100:12003/eureka/
+---
+spring:
+  profiles: sit
+server:
+  port: 12005
+  servlet:
+    context-path: /client
+eureka:
+  instance:
+    appname: service-004
+  client:
+    service-url:
+      defaultZone: http://192.168.100.100:12003/eureka/
+---
+spring:
+  profiles: uat
+server:
+  port: 12006
+  servlet:
+    context-path: /client
+eureka:
+  instance:
+    appname: service-004
+  client:
+    service-url:
+      defaultZone: http://192.168.100.100:12003/eureka/
+---
+#spring:
+#  profiles:
+#    active: uat

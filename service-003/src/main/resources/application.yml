@@ -2,3 +2,7 @@ server:
   port: 12003
   servlet:
     context-path: /eureka
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
