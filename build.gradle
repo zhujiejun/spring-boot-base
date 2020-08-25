@@ -4,6 +4,7 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds
  */
+//base project
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.3.3.RELEASE' apply false
@@ -20,7 +21,7 @@ allprojects {
     }
 
     repositories {
-        mavenCentral()
+        //mavenCentral()
         maven { url "https://maven.aliyun.com/repository/central" }
         maven { url "https://maven.aliyun.com/repository/jcenter" }
         maven { url "https://maven.aliyun.com/repository/spring" }

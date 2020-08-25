@@ -1,0 +1,7 @@
+//spring cloud eureka client
+project(':service-004') {
+    dependencies {
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    }
+}
+mainClassName = 'com.zhujiejun.spring.App004'
