@@ -1,0 +1,6 @@
+project(':service-003') {
+    dependencies {
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+    }
+}
+mainClassName = 'com.zhujiejun.spring.App003'
