@@ -1,8 +1,36 @@
+spring:
+  profiles: dev
+  application:
+    name: service-003
 server:
   port: 12003
-#  servlet:
-#    context-path: /eureka
 eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
+---
+spring:
+  profiles: sit
+  application:
+    name: service-003
+server:
+  port: 12003
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+---
+spring:
+  profiles: uat
+  application:
+    name: service-003
+server:
+  port: 12003
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+---
+#spring:
+#  profiles:
+#    active: dev
