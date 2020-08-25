@@ -1,0 +1,6 @@
+project(':service-001') {
+    dependencies {
+        implementation 'org.springframework.cloud:spring-cloud-config-server'
+    }
+}
+mainClassName = 'com.zhujiejun.spring.App001'
