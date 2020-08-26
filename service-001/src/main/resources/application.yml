@@ -27,7 +27,7 @@ spring:
       server:
         git:
           uri: https://github.com/zhujiejun/spring-boot-config.git
-          basedir: service-001/src/main/resources/conf
+          basedir: /opt/jars/service-001-conf-1.0.0
           username: zhujiejun
           password: clh2012woaini
           refresh-rate: 5
@@ -47,7 +47,7 @@ spring:
       server:
         git:
           uri: https://github.com/zhujiejun/spring-boot-config.git
-          basedir: service-001/src/main/resources/conf
+          basedir: /opt/jars/service-001-conf-1.0.0
           username: zhujiejun
           password: clh2012woaini
           refresh-rate: 5
