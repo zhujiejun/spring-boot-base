@@ -19,15 +19,42 @@ server:
   port: 12001
 ---
 spring:
-  profiles: dev
+  profiles: sit
   application:
     name: service-001
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zhujiejun/spring-boot-config.git
+          basedir: service-001/src/main/resources/conf
+          username: zhujiejun
+          password: clh2012woaini
+          refresh-rate: 5
+          force-pull: true
+          clone-on-start: true
+  devtools:
+    add-properties: false
 server:
   port: 12001
 ---
 spring:
-  profiles: dev
+  profiles: uat
   application:
     name: service-001
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zhujiejun/spring-boot-config.git
+          basedir: service-001/src/main/resources/conf
+          username: zhujiejun
+          password: clh2012woaini
+          refresh-rate: 5
+          force-pull: true
+          clone-on-start: true
+  devtools:
+    add-properties: false
 server:
   port: 12001
+---

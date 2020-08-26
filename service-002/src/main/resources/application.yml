@@ -6,14 +6,14 @@ server:
   port: 12002
 ---
 spring:
-  profiles: dev
+  profiles: sit
   application:
     name: service-002
 server:
   port: 12002
 ---
 spring:
-  profiles: dev
+  profiles: uat
   application:
     name: service-002
 server:
