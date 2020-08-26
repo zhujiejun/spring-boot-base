@@ -4,7 +4,10 @@ spring:
     name: service-002
   cloud:
     config:
-      uri: http://node101:12001
+      uri: http://localhost:12001
+      username: zhujiejun
+      password: clh2012woaini
+      allow-override: true
 #spring.cloud.config
 server:
   port: 12002
