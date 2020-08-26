@@ -19,7 +19,7 @@ spring:
   application:
     name: service-004
 server:
-  port: 12005
+  port: 12004
   servlet:
     context-path: /client
 eureka:
@@ -35,7 +35,7 @@ spring:
   application:
     name: service-004
 server:
-  port: 12006
+  port: 12004
   servlet:
     context-path: /client
 eureka:
