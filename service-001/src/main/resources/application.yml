@@ -2,6 +2,15 @@ spring:
   profiles: dev
   application:
     name: service-001
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zhujiejun/spring-boot-config.git
+          basedir: service-001/src/main/resources/conf
+          username: zhujiejun
+          password: clh2012woaini
+#spring.cloud.config.server.git
 server:
   port: 12001
 ---
