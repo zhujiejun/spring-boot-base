@@ -1,20 +1,21 @@
 spring:
   profiles: dev
   application:
-    name: service-001
+    name: service-002
 server:
-  port: 12001
+  port: 12002
 ---
 spring:
   profiles: dev
   application:
-    name: service-001
+    name: service-002
 server:
-  port: 12001
+  port: 12002
 ---
 spring:
   profiles: dev
   application:
-    name: service-001
+    name: service-002
 server:
-  port: 12001
+  port: 12002
+---
