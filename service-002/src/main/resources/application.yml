@@ -18,13 +18,31 @@ spring:
   profiles: sit
   application:
     name: service-002
+  cloud:
+    config:
+      uri: http://node101:12001
+      username: zhujiejun
+      password: clh2012woaini
+      allow-override: true
+#spring.cloud.config
 server:
   port: 12002
+  servlet:
+    context-path: /002
 ---
 spring:
   profiles: uat
   application:
     name: service-002
+  cloud:
+    config:
+      uri: http://node101:12001
+      username: zhujiejun
+      password: clh2012woaini
+      allow-override: true
+#spring.cloud.config
 server:
   port: 12002
+  servlet:
+    context-path: /002
 ---
