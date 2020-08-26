@@ -8,6 +8,8 @@ eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:12003/eureka
 ---
 spring:
   profiles: sit
@@ -19,6 +21,8 @@ eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
+    service-url:
+      defaultZone: http://node101:12003/eureka
 ---
 spring:
   profiles: uat
@@ -30,6 +34,8 @@ eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
+    service-url:
+      defaultZone: http://node101:12003/eureka
 ---
 #spring:
 #  profiles:
