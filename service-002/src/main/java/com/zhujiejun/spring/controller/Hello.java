@@ -2,9 +2,13 @@ package com.zhujiejun.spring.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -41,6 +45,12 @@ public class Hello {
 
     @RequestMapping("/show")
     public String show() {
-        return String.format("the config properties are %s, %s, %s, %s", appId, identifier, username, password);
+        log.info("----------the id indentifier username password are {} {} {} {} ----------", appId, identifier, username, password);
+        Map<String, String> map = new HashMap();
+        map.put("id", appId);
+        map.put("identifier", identifier);
+        map.put("username", username);
+        map.put("password", password);
+        return new JSONObject(map).toString();
     }
 }
