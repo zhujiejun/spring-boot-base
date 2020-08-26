@@ -10,6 +10,8 @@ spring:
           basedir: service-001/src/main/resources/conf
           username: zhujiejun
           password: clh2012woaini
+  devtools:
+    add-properties: false
 #spring.cloud.config.server.git
 server:
   port: 12001
