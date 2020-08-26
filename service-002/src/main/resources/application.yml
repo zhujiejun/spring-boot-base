@@ -2,6 +2,10 @@ spring:
   profiles: dev
   application:
     name: service-002
+  cloud:
+    config:
+      uri: http://node101:12001
+#spring.cloud.config
 server:
   port: 12002
 ---
