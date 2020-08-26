@@ -11,8 +11,6 @@ spring:
 #spring.cloud.config
 server:
   port: 12002
-  servlet:
-    context-path: /002
 ---
 spring:
   profiles: sit
