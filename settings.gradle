@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'spring-boot-base'
-include 'service-001', 'service-002', 'service-003', 'service-004'
+include 'service-001', 'service-002', 'service-003', 'service-004', 'spring-usage'

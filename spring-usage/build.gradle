@@ -1,0 +1,6 @@
+//spring framework usage
+project(':spring-usage') {
+    dependencies {
+        implementation 'junit:junit:4.13'
+    }
+}
