@@ -6,8 +6,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = {"com.zhujiejun.spring.bean", "com.zhujiejun.spring.proc", "com.zhujiejun.spring.aware"})
 public class SpringConf {
-    /*@Bean(name = "order1")
-    public Order order() {
-        return new Order();
-    }*/
+
 }

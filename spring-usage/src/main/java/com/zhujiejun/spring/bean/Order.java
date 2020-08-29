@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
+//@Component
 public class Order {
     public Order() {
         System.out.println("第一步 执行无参数构造创建 bean 实例");

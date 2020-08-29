@@ -21,6 +21,13 @@ public class IOCBeanTest {
     @Test
     public void test002() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConf.class);
+
+        context.close();
+    }
+
+    @Test
+    public void test003() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConf.class);
         Order order = context.getBean("order", Order.class);
         //Order order1 = context.getBean("order1", Order.class);
         System.out.println("第四步 获取创建 bean 实例对象");
@@ -31,7 +38,7 @@ public class IOCBeanTest {
     }
 
     @Test
-    public void test003() {
+    public void test004() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConf.class);
         Object order = MyApplicationContextAware.getObject("order", Order.class);
         System.out.println(order);
@@ -41,7 +48,6 @@ public class IOCBeanTest {
     public static void main(String[] args) {
         IOCBeanTest test = new IOCBeanTest();
         //test.test001();
-        //test.test002();
-        test.test003();
+        test.test002();
     }
 }
