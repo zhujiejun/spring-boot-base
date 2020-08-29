@@ -5,5 +5,5 @@
     <bean id="order" class="com.zhujiejun.spring.bean.Order" init-method="initMethod" destroy-method="destroyMethod">
         <property name="oname" value="手机"/>
     </bean>
-    <bean id="myBeanPost" class="com.zhujiejun.spring.bean.MyBeanPostProcessor"/>
+    <bean id="myBeanPost" class="com.zhujiejun.spring.proc.MyBeanPostProcessor"/>
 </beans>

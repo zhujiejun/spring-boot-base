@@ -7,10 +7,10 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class BeanTest {
+public class IOCBeanTest {
     @Test
     public void test001() {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         Order order = context.getBean("order", Order.class);
         System.out.println("第四步 获取创建 bean 实例对象");
         System.out.println(order);
@@ -39,7 +39,7 @@ public class BeanTest {
     }
 
     public static void main(String[] args) {
-        BeanTest test = new BeanTest();
+        IOCBeanTest test = new IOCBeanTest();
         //test.test001();
         //test.test002();
         test.test003();
