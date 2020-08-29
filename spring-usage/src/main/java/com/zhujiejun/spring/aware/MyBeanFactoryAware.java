@@ -5,7 +5,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class MyBeanFactoryAware implements BeanFactoryAware {
     private static BeanFactory factory;
 
