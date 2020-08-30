@@ -10,12 +10,12 @@ import java.util.Arrays;
 
 @Slf4j
 @Component
-public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
+public class Proc001 implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         int beanDefinitionCount = beanFactory.getBeanDefinitionCount();
         String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
-        log.info("\n-----------the current IOC container has {} beans-----------\n", beanDefinitionCount);
-        Arrays.stream(beanDefinitionNames).forEach(bean -> log.info("\n-----------the current bean in IOC container is '{}' ----------\n", bean));
+        log.info("\n---------the current IOC container has {} beans.----------\n", beanDefinitionCount);
+        Arrays.stream(beanDefinitionNames).forEach(name -> log.info("\n---------the current IOC bean name is {}.----------\n", name));
     }
 }
