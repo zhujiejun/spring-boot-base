@@ -1,4 +1,4 @@
-package com.zhujiejun.spring.proc;
+package com.zhujiejun.spring.bean;
 
 public class Hello {
     private String msg;
