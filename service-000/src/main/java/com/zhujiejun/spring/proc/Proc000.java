@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 @Slf4j
 @Component
-public class Proc001 implements BeanFactoryPostProcessor {
+public class Proc000 implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         log.warn("---------the current IOC container type is {}.----------\n", beanFactory.getClass());

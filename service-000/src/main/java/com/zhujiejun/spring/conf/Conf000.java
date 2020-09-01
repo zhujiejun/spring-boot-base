@@ -6,5 +6,5 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @Import(Hello.class)
-public class Conf001 {
+public class Conf000 {
 }
