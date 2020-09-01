@@ -13,6 +13,6 @@ public class Lisner001 {
     @EventListener({ContextClosedEvent.class})
     public void show() {
         Hello hello = Aware000.getTheBean("com.zhujiejun.spring.bean.Hello", Hello.class);
-        log.warn("----------context closed event: the bean hello in current IOC container is {}.----------", hello.toString());
+        log.warn("----------2.context closed event: the bean hello in current IOC container is {}.----------", hello.toString());
     }
 }

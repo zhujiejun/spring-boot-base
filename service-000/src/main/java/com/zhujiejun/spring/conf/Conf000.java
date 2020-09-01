@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @Import(Hello.class)
-@PropertySource({"classpath:autoconfig.yml"})
+@PropertySource({"classpath:autoconfig.properties"})
 public class Conf000 {
 
 }
