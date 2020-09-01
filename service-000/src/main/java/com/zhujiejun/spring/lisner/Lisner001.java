@@ -1,4 +1,4 @@
-package com.zhujiejun.spring.liser;
+package com.zhujiejun.spring.lisner;
 
 import com.zhujiejun.spring.aware.Aware000;
 import com.zhujiejun.spring.bean.Hello;
@@ -13,7 +13,6 @@ public class Lisner001 {
     @EventListener({ContextClosedEvent.class})
     public void show() {
         Hello hello = Aware000.getTheBean("com.zhujiejun.spring.bean.Hello", Hello.class);
-        log.warn("----------the bean hello in current IOC container is {}.----------", hello.toString());
-        //log.warn("----------the username of current bean hello is {}.---------", hello.getUsername());
+        log.warn("----------context closed event: the bean hello in current IOC container is {}.----------", hello.toString());
     }
 }

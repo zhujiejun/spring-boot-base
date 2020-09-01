@@ -1,5 +1,6 @@
 package com.zhujiejun.spring.proc;
 
+import com.zhujiejun.spring.bean.Hello;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
@@ -24,10 +25,7 @@ public class Proc000 implements BeanFactoryPostProcessor {
         log.warn("---------the tablePrefix of bean taskProperties in current IOC container is {}.----------\n",
                 taskProperties.getTablePrefix());*/
 
-        /*Hello hello = beanFactory.getBean("com.zhujiejun.spring.bean.Hello", Hello.class);
-        log.warn("---------the bean hello in current IOC container is {}.----------\n", hello.toString());
-        if (Objects.nonNull(hello)) {
-            log.warn("---------the username of bean hello in current IOC container is {}.----------\n", hello.getUsername());
-        }*/
+        Hello hello = beanFactory.getBean("com.zhujiejun.spring.bean.Hello", Hello.class);
+        log.warn("----------invoked beanFactoryPostProcess: the bean hello in current IOC container is {}.----------", hello.toString());
     }
 }
