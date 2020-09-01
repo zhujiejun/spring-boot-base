@@ -13,6 +13,7 @@ import java.util.Arrays;
 public class Proc001 implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        log.info("\n---------the current IOC container type is {}.----------\n", beanFactory.getClass());
         int beanDefinitionCount = beanFactory.getBeanDefinitionCount();
         String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
         log.info("\n---------the current IOC container has {} beans.----------\n", beanDefinitionCount);
