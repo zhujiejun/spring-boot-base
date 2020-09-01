@@ -7,16 +7,25 @@ spring:
       server:
         git:
           uri: https://github.com/zhujiejun/spring-boot-config.git
-          basedir: service-001/src/main/resources/conf
+          basedir: /opt/data/spring/boot/001/conf
           username: zhujiejun
           password: clh2012woaini
           refresh-rate: 5
           force-pull: true
           clone-on-start: true
+          #search-paths:
   devtools:
     add-properties: false
 server:
   port: 12001
+logging:
+  level:
+    root: warn
+  file:
+    name: /opt/logs/spring/boot/001/info.log
+  pattern:
+    file: '%m'
+    #console: '%m'
 ---
 spring:
   profiles: sit
