@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class IOCBeanTest {
     @Test
     public void test001() {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
         Order order = context.getBean("order", Order.class);
         System.out.println("第四步 获取创建 bean 实例对象");
         System.out.println(order);
