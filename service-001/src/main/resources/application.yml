@@ -20,9 +20,9 @@ server:
   port: 12001
 logging:
   level:
-    root: warn
+    root: info
   file:
-    name: /opt/logs/spring/boot/001/info.log
+    name: /opt/logs/spring/boot/001/dev/info.log
   pattern:
     file: '%m'
     #console: '%m'

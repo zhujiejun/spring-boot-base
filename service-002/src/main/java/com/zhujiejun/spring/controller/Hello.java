@@ -1,5 +1,6 @@
 package com.zhujiejun.spring.controller;
 
+import com.zhujiejun.spring.aware.Aware002;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,21 +25,21 @@ import java.util.Map;
 public class Hello {
 
     /**
-     * app.tim.sdk.app.id=00002
+     * app.tim.sdk.app.id=00001
      * app.tim.admin.identifier=admin
      * app.tim.admin.username=zhujiejun
      * app.tim.admin.password=123456789
      *
      * @return
      */
-    @Value("${app.tim.sdk.app.id}")
+    /*@Value("${app.tim.sdk.app.id}")
     private String appId;
     @Value("${app.tim.admin.identifier}")
     private String identifier;
     @Value("${app.tim.admin.username}")
     private String username;
     @Value("${app.tim.admin.password}")
-    private String password;
+    private String password;*/
 
     private String sdkAppId;
     private String adminIdentifier;
@@ -49,10 +51,18 @@ public class Hello {
         return "zhujiejun\n";
     }
 
+    @RequestMapping("/bean")
+    public String getBean() {
+        Arrays.stream(Aware002.getBeanNames()).forEach(log::info);
+        return String.format("Current IOC container has %d beans.", Aware002.getBeanCount());
+    }
+
     @RequestMapping("/show")
     public String show() {
-        log.info("1.----------the id, indentifier, username and  password are {}, {}, {}, {} ----------", appId, identifier, username, password);
-        log.info("2.----------the id, indentifier, username and  password are {}, {}, {}, {} ----------", sdkAppId, adminIdentifier, adminUsername, adminPassword);
+        //log.info("1.----------the id, indentifier, username and  password are {}, {}, {}, {} ----------",
+        //        appId, identifier, username, password);
+        log.info("2.----------the id, indentifier, username and  password are {}, {}, {}, {} ----------",
+                sdkAppId, adminIdentifier, adminUsername, adminPassword);
         Map<String, String> map = new HashMap();
         /*map.put("id", appId);
         map.put("identifier", identifier);
