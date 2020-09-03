@@ -1,0 +1,51 @@
+spring:
+  profiles: dev
+  application:
+    name: service-010
+  devtools:
+    add-properties: false
+server:
+  port: 12010
+logging:
+  level:
+    root: info
+  file:
+    name: /opt/logs/spring/boot/010/dev/info.log
+  pattern:
+    file: '%m'
+    #console: '%m'
+---
+spring:
+  profiles: sit
+  application:
+    name: service-010
+  devtools:
+    add-properties: false
+server:
+  port: 12010
+logging:
+  level:
+    root: info
+  file:
+    name: /opt/logs/spring/boot/010/sit/info.log
+  pattern:
+    file: '%m'
+    #console: '%m'
+---
+spring:
+  profiles: ust
+  application:
+    name: service-010
+  devtools:
+    add-properties: false
+server:
+  port: 12010
+logging:
+  level:
+    root: info
+  file:
+    name: /opt/logs/spring/boot/010/uat/info.log
+  pattern:
+    file: '%m'
+    #console: '%m'
+---
