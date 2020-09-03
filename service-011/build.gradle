@@ -1,5 +1,5 @@
-//spring boot kafka producer usage
-project(':service-010') {
+//spring boot kafka consumer usage
+project(':service-011') {
     dependencies {
         implementation 'org.apache.kafka:kafka-streams'
         implementation 'org.springframework.kafka:spring-kafka'
@@ -7,4 +7,4 @@ project(':service-010') {
         testImplementation 'org.springframework.kafka:spring-kafka-test'
     }
 }
-mainClassName = 'com.zhujiejun.spring.App010'
+mainClassName = 'com.zhujiejun.spring.App011'

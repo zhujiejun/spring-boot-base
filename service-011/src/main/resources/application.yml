@@ -1,0 +1,114 @@
+spring:
+  profiles: dev
+  application:
+    name: service-011
+  devtools:
+    add-properties: false
+  kafka:
+    listener:
+      missing-topics-fatal: false
+    consumer:
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      auto-offset-reset: latest
+      bootstrap-servers: node101:9092, node102:9092, node103:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserialize
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserialize
+      properties:
+        group:
+          id: spring-boot-group
+        session:
+          timeout:
+            ms: 120000
+        request:
+          timeout:
+            ms: 180000
+server:
+  port: 12011
+  servlet:
+    context-path: /011
+logging:
+  level:
+    root: info
+  file:
+    name: /opt/logs/spring/boot/011/dev/info.log
+  pattern:
+    file: '%m'
+    #console: '%m'
+---
+spring:
+  profiles: sit
+  application:
+    name: service-011
+  devtools:
+    add-properties: false
+  kafka:
+    listener:
+      missing-topics-fatal: false
+    consumer:
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      auto-offset-reset: latest
+      bootstrap-servers: node101:9092, node102:9092, node103:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserialize
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserialize
+      properties:
+        group:
+          id: spring-boot-group
+        session:
+          timeout:
+            ms: 120000
+        request:
+          timeout:
+            ms: 180000
+server:
+  port: 12011
+  servlet:
+    context-path: /011
+logging:
+  level:
+    root: info
+  file:
+    name: /opt/logs/spring/boot/011/sit/info.log
+  pattern:
+    file: '%m'
+    #console: '%m'
+---
+spring:
+  profiles: uat
+  application:
+    name: service-011
+  devtools:
+    add-properties: false
+  kafka:
+    listener:
+      missing-topics-fatal: false
+    consumer:
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      auto-offset-reset: latest
+      bootstrap-servers: node101:9092, node102:9092, node103:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserialize
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserialize
+      properties:
+        group:
+          id: spring-boot-group
+        session:
+          timeout:
+            ms: 120000
+        request:
+          timeout:
+            ms: 180000
+server:
+  port: 12011
+  servlet:
+    context-path: /011
+logging:
+  level:
+    root: info
+  file:
+    name: /opt/logs/spring/boot/011/uat/info.log
+  pattern:
+    file: '%m'
+    #console: '%m'
+---
