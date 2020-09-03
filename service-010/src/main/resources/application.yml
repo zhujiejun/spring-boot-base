@@ -4,8 +4,23 @@ spring:
     name: service-010
   devtools:
     add-properties: false
+  kafka:
+    producer:
+      acks: 1
+      retries: 0
+      client-id: kafka-producer-010
+      batch-size: 16348
+      buffer-memory: 33554432
+      bootstrap-servers: node101:9092, node102:9092, node103:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        linger:
+        ms: 0
 server:
   port: 12010
+  servlet:
+    context-path: /010
 logging:
   level:
     root: info

@@ -3,6 +3,7 @@ project(':service-010') {
     dependencies {
         implementation 'org.apache.kafka:kafka-streams'
         implementation 'org.springframework.kafka:spring-kafka'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
         testImplementation 'org.springframework.kafka:spring-kafka-test'
     }
 }
