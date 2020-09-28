@@ -88,12 +88,33 @@ public class AppCountDown {
      * b-c-a
      * a-c-b
      * b-c-a
+     * * * *
+     * A-B-C
+     * C-B-A
+     *
+     * C:LOCK-CONDITION:A: false
+     * C:LOCK-CONDITION:B: false
+     * C:LOCK-CONDITION:C: false
+     *
+     * B:LOCK-CONDITION:A: false
+     * B:LOCK-CONDITION:B: false
+     * B:LOCK-CONDITION:C: true
+     *
+     * A:LOCK-CONDITION:A: false
+     * A:LOCK-CONDITION:B: true
+     * A:LOCK-CONDITION:C: true
+     *
+     * ------this ia thread a------
+     *
+     * ------this ia thread b------
+     *
+     * ------this ia thread c------
      */
     private static void threada() {
         LOCK.lock();
-        System.out.println("1.LOCK-CONDITION_A: " + LOCK.hasWaiters(CONDITION_A));
-        System.out.println("1.LOCK-CONDITION_B: " + LOCK.hasWaiters(CONDITION_B));
-        System.out.println("1.LOCK-CONDITION_C: " + LOCK.hasWaiters(CONDITION_C));
+        System.out.println("A:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+        System.out.println("A:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
+        System.out.println("A:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
         try {
             while (!ORDER.equals(A)) {
                 CONDITION_A.await();
@@ -111,9 +132,9 @@ public class AppCountDown {
 
     private static void threadb() {
         LOCK.lock();
-        System.out.println("2.LOCK-CONDITION_A: " + LOCK.hasWaiters(CONDITION_A));
-        System.out.println("2.LOCK-CONDITION_B: " + LOCK.hasWaiters(CONDITION_B));
-        System.out.println("2.LOCK-CONDITION_C: " + LOCK.hasWaiters(CONDITION_C));
+        System.out.println("B:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+        System.out.println("B:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
+        System.out.println("B:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
         try {
             while (!ORDER.equals(B)) {
                 CONDITION_B.await();
@@ -131,9 +152,9 @@ public class AppCountDown {
 
     private static void threadc() {
         LOCK.lock();
-        System.out.println("3.LOCK-CONDITION_A: " + LOCK.hasWaiters(CONDITION_A));
-        System.out.println("3.LOCK-CONDITION_B: " + LOCK.hasWaiters(CONDITION_B));
-        System.out.println("3.LOCK-CONDITION_C: " + LOCK.hasWaiters(CONDITION_C));
+        System.out.println("C:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+        System.out.println("C:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
+        System.out.println("C:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
         try {
             while (!ORDER.equals(C)) {
                 CONDITION_C.await();
