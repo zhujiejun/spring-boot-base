@@ -1,4 +1,4 @@
-package com.zhujiejun.java.thread;
+package com.zhujiejun.java.thread.fight;
 
 import com.google.common.collect.Lists;
 

@@ -1,4 +1,4 @@
-package com.zhujiejun.java.test;
+package com.zhujiejun.java.zother;
 
 import java.util.HashMap;
 import java.util.Map;

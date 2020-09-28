@@ -1,5 +1,6 @@
 project(':java-usage') {
     dependencies {
         implementation group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+        implementation group: 'io.reactivex.rxjava3', name: 'rxjava', version: '3.0.6'
     }
 }
