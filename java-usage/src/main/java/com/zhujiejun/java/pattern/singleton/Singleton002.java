@@ -1,4 +1,5 @@
-package com.zhujiejun.zokper.singleton;
+package com.zhujiejun.java.pattern.singleton;
+
 
 public final class Singleton002 {
     private byte[] data = new byte[1024];

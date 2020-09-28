@@ -1,4 +1,4 @@
-package com.zhujiejun.zokper.thread;
+package com.zhujiejun.java.thread;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

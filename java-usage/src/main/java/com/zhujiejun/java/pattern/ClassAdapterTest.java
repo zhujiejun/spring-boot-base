@@ -1,4 +1,4 @@
-package com.zhujiejun.zokper.pattern;
+package com.zhujiejun.java.pattern;
 
 interface Target {
     public void request();
