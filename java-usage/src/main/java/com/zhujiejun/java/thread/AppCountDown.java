@@ -104,11 +104,11 @@ public class AppCountDown {
      * A:LOCK-CONDITION:B: true
      * A:LOCK-CONDITION:C: true
      * <p>
-     * ------this ia thread a------
+     * ------this is thread a------
      * <p>
-     * ------this ia thread b------
+     * ------this is thread b------
      * <p>
-     * ------this ia thread c------
+     * ------this is thread c------
      * <p>
      * C: thread-c spin...
      * <p>
@@ -119,9 +119,9 @@ public class AppCountDown {
      * thread-b wait...
      * thread-c wait...
      * <p>
-     * thread-a execute
-     * thread-b execute
-     * thread-c execute
+     * thread-a execute ORDER:A->B
+     * thread-b execute ORDER:B->C
+     * thread-c execute ORDER:C->A
      */
     private static void threada() {
         LOCK.lock();
@@ -132,7 +132,7 @@ public class AppCountDown {
             while (!ORDER.equals(A)) {
                 CONDITION_A.await();
             }
-            System.out.println("------this ia thread a------\n");
+            System.out.println("------this is thread a------\n");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
             ORDER = B;
             CONDITION_B.signal();
@@ -152,7 +152,7 @@ public class AppCountDown {
             while (!ORDER.equals(B)) {
                 CONDITION_B.await();
             }
-            System.out.println("------this ia thread b------\n");
+            System.out.println("------this is thread b------\n");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
             ORDER = C;
             CONDITION_C.signal();
@@ -172,7 +172,7 @@ public class AppCountDown {
             while (!ORDER.equals(C)) {
                 CONDITION_C.await();
             }
-            System.out.println("------this ia thread c------\n");
+            System.out.println("------this is thread c------\n");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
             ORDER = A;
             CONDITION_A.signal();
