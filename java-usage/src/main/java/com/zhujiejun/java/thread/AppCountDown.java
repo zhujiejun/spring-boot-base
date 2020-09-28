@@ -13,7 +13,7 @@ public class AppCountDown {
     private static final String A = "A";
     private static final String B = "B";
     private static final String C = "C";
-    private static volatile String ORDER = A;
+    private static volatile String ORDERBY = A;
 
     private static final int SLEEP = 2000;
 
@@ -121,12 +121,12 @@ public class AppCountDown {
         System.out.println("A:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
         System.out.println("A:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
         try {
-            while (!ORDER.equals(A)) {
+            while (!ORDERBY.equals(A)) {
                 CONDITION_A.await();
             }
             System.out.println("------this is thread a------\n");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
-            ORDER = B;
+            ORDERBY = B;
             CONDITION_B.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -141,12 +141,12 @@ public class AppCountDown {
         System.out.println("B:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
         System.out.println("B:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
         try {
-            while (!ORDER.equals(B)) {
+            while (!ORDERBY.equals(B)) {
                 CONDITION_B.await();
             }
             System.out.println("------this is thread b------\n");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
-            ORDER = C;
+            ORDERBY = C;
             CONDITION_C.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -161,12 +161,12 @@ public class AppCountDown {
         System.out.println("C:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
         System.out.println("C:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
         try {
-            while (!ORDER.equals(C)) {
+            while (!ORDERBY.equals(C)) {
                 CONDITION_C.await();
             }
             System.out.println("------this is thread c------\n");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
-            ORDER = A;
+            ORDERBY = A;
             CONDITION_A.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
