@@ -41,12 +41,12 @@ public class AppCountDown {
         THREAD_POOR.submit(AppCountDown::threada);
         THREAD_POOR.submit(AppCountDown::threadb);
         THREAD_POOR.submit(AppCountDown::threadc);
-        try {
+        /*try {
             TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        THREAD_POOR.shutdown();
+        THREAD_POOR.shutdown();*/
     }
 
     /**
