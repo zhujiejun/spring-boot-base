@@ -1,5 +1,7 @@
 package com.zhujiejun.java.thread;
 
+import com.google.common.base.Stopwatch;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,6 +20,7 @@ public class AppCountDown {
     private static final ExecutorService THREAD_POOR = Executors.newFixedThreadPool(120);
 
     public static void main(String[] args) {
+        Stopwatch stopwatch = Stopwatch.createStarted();
         IntStream.rangeClosed(1, 100).forEach(i -> THREAD_POOR.submit(AppCountDown::increment));
         try {
             LATCH.await();
@@ -26,8 +29,19 @@ public class AppCountDown {
         }
         System.out.println("FINALLY, COUNTOR = " + COUNTOR);
         THREAD_POOR.shutdown();
+        System.out.println("TOTAL TIME CONSUMPTION IS " + stopwatch.elapsed(TimeUnit.NANOSECONDS));
     }
 
+    /**
+     * 2083272965
+     * 2087690756
+     * <p>
+     * 2089607227
+     * 2085634892
+     * <p>
+     * 2091093921
+     * 2084919993
+     */
     private static void increment() {
         System.out.println("current thread is " + Thread.currentThread().getName());
         try {
@@ -35,9 +49,9 @@ public class AppCountDown {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //LOCK.lock();
+        LOCK.lock();
         COUNTOR++;
-        //LOCK.unlock();
+        LOCK.unlock();
         LATCH.countDown();
     }
 }
