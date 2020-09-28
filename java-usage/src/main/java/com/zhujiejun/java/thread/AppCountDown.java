@@ -27,9 +27,9 @@ public class AppCountDown {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("FINALLY, COUNTOR = " + COUNTOR);
+        System.out.println("finally, countor = " + COUNTOR);
         THREAD_POOR.shutdown();
-        System.out.println("TOTAL TIME CONSUMPTION IS " + stopwatch.elapsed(TimeUnit.NANOSECONDS));
+        System.out.println("total time consumption is " + stopwatch.elapsed(TimeUnit.NANOSECONDS) + " ns.");
     }
 
     /**
@@ -49,11 +49,15 @@ public class AppCountDown {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        LOCK.lock();
+        /*LOCK.lock();
         System.out.println("\n1.Hold Count and  Queue Length are " + LOCK.getHoldCount() + " " + LOCK.getQueueLength());
         COUNTOR++;
         LOCK.unlock();
-        System.out.println("2.Hold Count and  Queue Length are " + LOCK.getHoldCount() + " " + LOCK.getQueueLength() + "\n");
+        System.out.println("2.Hold Count and  Queue Length are " + LOCK.getHoldCount() + " " + LOCK.getQueueLength() + "\n");*/
+
+        synchronized (AppCountDown.class) {
+            COUNTOR++;
+        }
         LATCH.countDown();
     }
 }
