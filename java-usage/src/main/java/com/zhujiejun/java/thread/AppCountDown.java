@@ -141,12 +141,46 @@ public class AppCountDown {
      * ------this is thread c------
      * <p> done
      * 3.* * * * * * * * * * * * * * *
+     * B-C-A
+     * A-B-C
+     * B1:LOCK-CONDITION:A: false
+     * B1:LOCK-CONDITION:B: false
+     * B1:LOCK-CONDITION:C: false
+     * <p>
+     * C1:LOCK-CONDITION:A: false
+     * C1:LOCK-CONDITION:B: true
+     * C1:LOCK-CONDITION:C: false
+     * <p>
+     * A1:LOCK-CONDITION:A: false
+     * A1:LOCK-CONDITION:B: true
+     * A1:LOCK-CONDITION:C: true
+     * <p>
+     * ------this is thread a------
+     * <p>
+     * A2:LOCK-CONDITION:A: false
+     * A2:LOCK-CONDITION:B: false
+     * A2:LOCK-CONDITION:C: true
+     * <p>
+     * ------this is thread b------
+     * <p>
+     * B2:LOCK-CONDITION:A: false
+     * B2:LOCK-CONDITION:B: false
+     * B2:LOCK-CONDITION:C: false
+     * <p>
+     * ------this is thread c------
+     * <p>
+     * C2:LOCK-CONDITION:A: false
+     * C2:LOCK-CONDITION:B: false
+     * C2:LOCK-CONDITION:C: false
      */
     private static void threada() {
         LOCK.lock();
-        System.out.println("A:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+        /*System.out.println("A:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
         System.out.println("A:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
-        System.out.println("A:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
+        System.out.println("A:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");*/
+        System.out.println("A1:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+        System.out.println("A1:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
+        System.out.println("A1:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
         try {
             while (!ORDERBY.equals(A)) {
                 CONDITION_A.await();
@@ -158,15 +192,21 @@ public class AppCountDown {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
+            System.out.println("A2:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+            System.out.println("A2:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
+            System.out.println("A2:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
             LOCK.unlock();
         }
     }
 
     private static void threadb() {
         LOCK.lock();
-        System.out.println("B:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+        /*System.out.println("B:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
         System.out.println("B:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
-        System.out.println("B:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
+        System.out.println("B:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");*/
+        System.out.println("B1:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+        System.out.println("B1:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
+        System.out.println("B1:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
         try {
             while (!ORDERBY.equals(B)) {
                 CONDITION_B.await();
@@ -178,15 +218,21 @@ public class AppCountDown {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
+            System.out.println("B2:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+            System.out.println("B2:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
+            System.out.println("B2:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
             LOCK.unlock();
         }
     }
 
     private static void threadc() {
         LOCK.lock();
-        System.out.println("C:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+        /*System.out.println("C:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
         System.out.println("C:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
-        System.out.println("C:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
+        System.out.println("C:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");*/
+        System.out.println("C1:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+        System.out.println("C1:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
+        System.out.println("C1:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
         try {
             while (!ORDERBY.equals(C)) {
                 CONDITION_C.await();
@@ -198,6 +244,9 @@ public class AppCountDown {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
+            System.out.println("C2:LOCK-CONDITION:A: " + LOCK.hasWaiters(CONDITION_A));
+            System.out.println("C2:LOCK-CONDITION:B: " + LOCK.hasWaiters(CONDITION_B));
+            System.out.println("C2:LOCK-CONDITION:C: " + LOCK.hasWaiters(CONDITION_C) + "\n");
             LOCK.unlock();
         }
     }
