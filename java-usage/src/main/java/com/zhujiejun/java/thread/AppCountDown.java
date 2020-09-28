@@ -15,13 +15,13 @@ public class AppCountDown {
 
     private static final ReentrantLock LOCK = new ReentrantLock();
 
-    private static final CountDownLatch LATCH = new CountDownLatch(100);
+    private static final CountDownLatch LATCH = new CountDownLatch(10);
 
-    private static final ExecutorService THREAD_POOR = Executors.newFixedThreadPool(120);
+    private static final ExecutorService THREAD_POOR = Executors.newFixedThreadPool(15);
 
     public static void main(String[] args) {
         Stopwatch stopwatch = Stopwatch.createStarted();
-        IntStream.rangeClosed(1, 100).forEach(i -> THREAD_POOR.submit(AppCountDown::increment));
+        IntStream.rangeClosed(1, 10).forEach(i -> THREAD_POOR.submit(AppCountDown::increment));
         try {
             LATCH.await();
         } catch (InterruptedException e) {
@@ -50,8 +50,10 @@ public class AppCountDown {
             e.printStackTrace();
         }
         LOCK.lock();
+        System.out.println("\n1.Hold Count and  Queue Length are " + LOCK.getHoldCount() + " " + LOCK.getQueueLength());
         COUNTOR++;
         LOCK.unlock();
+        System.out.println("2.Hold Count and  Queue Length are " + LOCK.getHoldCount() + " " + LOCK.getQueueLength() + "\n");
         LATCH.countDown();
     }
 }
