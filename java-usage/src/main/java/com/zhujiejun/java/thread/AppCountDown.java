@@ -43,9 +43,9 @@ public class AppCountDown {
         THREAD_POOR.shutdown();
         System.out.println("total time consumption is " + stopwatch.elapsed(TimeUnit.NANOSECONDS) + " ns.");*/
         /*--------------------------------------------------------------------------------------------------*/
-        THREAD_POOR.submit(AppCountDown::threada);
-        THREAD_POOR.submit(AppCountDown::threadb);
         THREAD_POOR.submit(AppCountDown::threadc);
+        THREAD_POOR.submit(AppCountDown::threadb);
+        THREAD_POOR.submit(AppCountDown::threada);
         try {
             TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
@@ -91,11 +91,14 @@ public class AppCountDown {
      */
     private static void threada() {
         LOCK.lock();
+        System.out.println("1.LOCK-CONDITION_A: " + LOCK.hasWaiters(CONDITION_A));
+        System.out.println("1.LOCK-CONDITION_B: " + LOCK.hasWaiters(CONDITION_B));
+        System.out.println("1.LOCK-CONDITION_C: " + LOCK.hasWaiters(CONDITION_C));
         try {
             while (!ORDER.equals(A)) {
                 CONDITION_A.await();
             }
-            System.out.println("------this ia thread a------");
+            System.out.println("------this ia thread a------\n");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
             ORDER = B;
             CONDITION_B.signal();
@@ -108,11 +111,14 @@ public class AppCountDown {
 
     private static void threadb() {
         LOCK.lock();
+        System.out.println("2.LOCK-CONDITION_A: " + LOCK.hasWaiters(CONDITION_A));
+        System.out.println("2.LOCK-CONDITION_B: " + LOCK.hasWaiters(CONDITION_B));
+        System.out.println("2.LOCK-CONDITION_C: " + LOCK.hasWaiters(CONDITION_C));
         try {
             while (!ORDER.equals(B)) {
                 CONDITION_B.await();
             }
-            System.out.println("------this ia thread b------");
+            System.out.println("------this ia thread b------\n");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
             ORDER = C;
             CONDITION_C.signal();
@@ -125,11 +131,14 @@ public class AppCountDown {
 
     private static void threadc() {
         LOCK.lock();
+        System.out.println("3.LOCK-CONDITION_A: " + LOCK.hasWaiters(CONDITION_A));
+        System.out.println("3.LOCK-CONDITION_B: " + LOCK.hasWaiters(CONDITION_B));
+        System.out.println("3.LOCK-CONDITION_C: " + LOCK.hasWaiters(CONDITION_C));
         try {
             while (!ORDER.equals(C)) {
                 CONDITION_C.await();
             }
-            System.out.println("------this ia thread c------");
+            System.out.println("------this ia thread c------\n");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
             ORDER = A;
             CONDITION_A.signal();
