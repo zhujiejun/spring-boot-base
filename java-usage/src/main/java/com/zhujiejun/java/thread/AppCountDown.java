@@ -42,7 +42,7 @@ public class AppCountDown {
         THREAD_POOR.submit(AppCountDown::threadb);
         THREAD_POOR.submit(AppCountDown::threadc);
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
