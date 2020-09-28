@@ -89,8 +89,8 @@ public class AppCountDown {
      * a-c-b
      * b-c-a
      * * * *
-     * A-B-C
      * C-B-A
+     * A-B-C
      * <p> init: ORDER=A
      * C:LOCK-CONDITION:A: false
      * C:LOCK-CONDITION:B: false
