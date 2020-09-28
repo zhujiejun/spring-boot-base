@@ -13,7 +13,7 @@ public class AppOrderLock {
     private final Condition conditionB = lock.newCondition();
     private final Condition conditionC = lock.newCondition();
 
-    public void printA() {
+    public void threadA() {
         try {
             lock.lock();
             if (flag != 1) {
@@ -31,7 +31,7 @@ public class AppOrderLock {
         }
     }
 
-    public void printB() {
+    public void threadB() {
         try {
             lock.lock();
             if (flag != 2) {
@@ -49,7 +49,7 @@ public class AppOrderLock {
         }
     }
 
-    public void printC() {
+    public void threadC() {
         try {
             lock.lock();
             if (flag != 3) {
@@ -74,9 +74,9 @@ public class AppOrderLock {
         Thread threadB = new Thread(order::printB, "thread-B");
         Thread threadC = new Thread(order::printC, "thread-C");*/
 
-        Thread threadA = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.printA()), "thread-A");
-        Thread threadB = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.printB()), "thread-B");
-        Thread threadC = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.printC()), "thread-C");
+        Thread threadA = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.threadA()), "thread-A");
+        Thread threadB = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.threadB()), "thread-B");
+        Thread threadC = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.threadC()), "thread-C");
 
         threadB.start();
         threadA.start();

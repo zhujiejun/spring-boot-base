@@ -16,7 +16,7 @@ public class AppOrderSync {
 
     private int flag = 1;
 
-    public synchronized void printA() {
+    public synchronized void threadA() {
         while (flag != 1) {
             try {
                 this.wait();
@@ -29,7 +29,7 @@ public class AppOrderSync {
         this.notifyAll();
     }
 
-    public synchronized void printB() {
+    public synchronized void threadB() {
         while (flag != 2) {
             try {
                 this.wait();
@@ -42,7 +42,7 @@ public class AppOrderSync {
         this.notifyAll();
     }
 
-    public synchronized void printC() {
+    public synchronized void threadC() {
         while (flag != 3) {
             try {
                 this.wait();
@@ -62,9 +62,9 @@ public class AppOrderSync {
         Thread threadB = new Thread(order::printB, "thread-B");
         Thread threadC = new Thread(order::printC, "thread-C");*/
 
-        Thread threadA = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.printA()), "thread-A");
-        Thread threadB = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.printB()), "thread-B");
-        Thread threadC = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.printC()), "thread-C");
+        Thread threadA = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.threadA()), "thread-A");
+        Thread threadB = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.threadB()), "thread-B");
+        Thread threadC = new Thread(() -> IntStream.range(0, 5).forEach(i -> order.threadC()), "thread-C");
 
         threadB.start();
         threadA.start();

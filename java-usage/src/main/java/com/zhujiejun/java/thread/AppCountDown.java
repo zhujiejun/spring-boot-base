@@ -1,14 +1,12 @@
 package com.zhujiejun.java.thread;
 
-import com.google.common.base.Stopwatch;
-
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.IntStream;
 
 public class AppCountDown {
 
@@ -23,7 +21,7 @@ public class AppCountDown {
     private static final ExecutorService THREAD_POOR = Executors.newFixedThreadPool(15);
 
     public static void main(String[] args) {
-        Stopwatch stopwatch = Stopwatch.createStarted();
+        /*Stopwatch stopwatch = Stopwatch.createStarted();
         IntStream.rangeClosed(1, 10).forEach(i -> THREAD_POOR.submit(AppCountDown::increment));
         try {
             LATCH.await();
@@ -32,7 +30,17 @@ public class AppCountDown {
         }
         System.out.println("finally, countor = " + COUNTOR);
         THREAD_POOR.shutdown();
-        System.out.println("total time consumption is " + stopwatch.elapsed(TimeUnit.NANOSECONDS) + " ns.");
+        System.out.println("total time consumption is " + stopwatch.elapsed(TimeUnit.NANOSECONDS) + " ns.");*/
+        /*--------------------------------------------------------------------------------------------------*/
+        THREAD_POOR.submit(AppCountDown::threada);
+        THREAD_POOR.submit(AppCountDown::threadb);
+        THREAD_POOR.submit(AppCountDown::threadc);
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        THREAD_POOR.shutdown();
     }
 
     /**
@@ -62,5 +70,38 @@ public class AppCountDown {
             COUNTOR++;
         }
         LATCH.countDown();
+    }
+
+    /**
+     * c-a-b
+     * b-c-a
+     * a-c-b
+     * b-c-a
+     */
+    private static void threada() {
+        try {
+            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(800));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("this ia thread a");
+    }
+
+    private static void threadb() {
+        try {
+            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(800));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("this ia thread b");
+    }
+
+    private static void threadc() {
+        try {
+            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(800));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("this ia thread c");
     }
 }
