@@ -43,8 +43,8 @@ public class AppCountDown {
         THREAD_POOR.shutdown();
         System.out.println("total time consumption is " + stopwatch.elapsed(TimeUnit.NANOSECONDS) + " ns.");*/
         /*--------------------------------------------------------------------------------------------------*/
-        THREAD_POOR.submit(AppCountDown::threadc);
         THREAD_POOR.submit(AppCountDown::threadb);
+        THREAD_POOR.submit(AppCountDown::threadc);
         THREAD_POOR.submit(AppCountDown::threada);
         try {
             TimeUnit.SECONDS.sleep(10);
@@ -84,11 +84,11 @@ public class AppCountDown {
     }
 
     /**
-     * c-a-b
-     * b-c-a
-     * a-c-b
-     * b-c-a
-     * * * *
+     * C-A-B
+     * B-C-A
+     * A-C-B
+     * B-C-A
+     * 1.* * * * * * * * * * * * * *
      * C-B-A
      * A-B-C
      * <p> init: ORDER=A
@@ -114,6 +114,32 @@ public class AppCountDown {
      * <p> execute: thread-c
      * ------this is thread c------
      * <p> done
+     * 2.* * * * * * * * * * * * * * *
+     * B-C-A
+     * A-B-C
+     * <p> init: ORDER=A
+     * B:LOCK-CONDITION:A: false
+     * B:LOCK-CONDITION:B: false
+     * B:LOCK-CONDITION:C: false
+     * <p> spin: thread-b wait....
+     * A:LOCK-CONDITION:A: false
+     * A:LOCK-CONDITION:B: true
+     * A:LOCK-CONDITION:C: false
+     * <p> execute: thread-a
+     * ------this is thread a------
+     * <p> set: ORDER=B
+     * <p> signal: thread-b
+     * C:LOCK-CONDITION:A: false
+     * C:LOCK-CONDITION:B: false
+     * C:LOCK-CONDITION:C: false
+     * <p> execute: thread-b
+     * ------this is thread b------
+     * <p> set: ORDER=C
+     * <p> signal: thread-c
+     * <p> execute: thread-c
+     * ------this is thread c------
+     * <p> done
+     * 3.* * * * * * * * * * * * * * *
      */
     private static void threada() {
         LOCK.lock();
