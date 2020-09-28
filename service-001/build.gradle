@@ -1,4 +1,10 @@
 //spring cloud config server
+plugins {
+    id "com.bmuschko.docker-spring-boot-application" version "6.6.0"
+}
+
+apply plugin: "com.bmuschko.docker-spring-boot-application"
+
 project(':service-001') {
     dependencies {
         implementation 'org.springframework.cloud:spring-cloud-config-server'

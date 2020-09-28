@@ -1,7 +1,31 @@
 //spring boot basic usage
+plugins {
+    id "com.bmuschko.docker-spring-boot-application" version "6.6.0"
+}
+
+apply plugin: "com.bmuschko.docker-spring-boot-application"
+
+/*docker {
+    springBoot {
+        ports = [12000, 12000]
+        baseImage = 'alpine:latest'
+        images = ['servive-001:1.0.0', 'servive-001:latest']
+        jvmArgs = ['-Dspring.profiles.active=dev', '-Xmx2048m']
+    }
+}*/
+
+/*
+dockerCreateDockerfile {
+
+}
+*/
+
+
 project(':service-000') {
     dependencies {
         //implementation 'org.springframework.boot:spring-boot-starter-web'
+        //implementation group: 'com.bmuschko', name: 'gradle-docker-plugin', version: '6.6.0'
+        //implementation group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.3.3.RELEASE'
     }
 }
 mainClassName = 'com.zhujiejun.spring.App000'
