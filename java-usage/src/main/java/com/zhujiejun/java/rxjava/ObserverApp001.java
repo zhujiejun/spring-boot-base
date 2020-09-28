@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 
 import java.util.stream.IntStream;
 
-public class AppNovel {
+public class ObserverApp001 {
     public static void main(String[] args) {
         //被观察者
         Observable<String> novel = Observable.create(emitter -> {
