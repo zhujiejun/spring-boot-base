@@ -29,7 +29,6 @@ public class AppOrderLock {
         } finally {
             lock.unlock();
         }
-
     }
 
     public void printB() {
@@ -48,7 +47,6 @@ public class AppOrderLock {
         } finally {
             lock.unlock();
         }
-
     }
 
     public void printC() {
