@@ -19,7 +19,6 @@ public class AppCountDown {
 
     private static volatile int COUNTOR = 0;
 
-
     private static final ReentrantLock LOCK = new ReentrantLock();
 
     private static final Condition CONDITION_A = LOCK.newCondition();
