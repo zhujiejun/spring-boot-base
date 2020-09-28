@@ -91,24 +91,37 @@ public class AppCountDown {
      * * * *
      * A-B-C
      * C-B-A
-     *
+     * <p>
      * C:LOCK-CONDITION:A: false
      * C:LOCK-CONDITION:B: false
      * C:LOCK-CONDITION:C: false
-     *
+     * <p>
      * B:LOCK-CONDITION:A: false
      * B:LOCK-CONDITION:B: false
      * B:LOCK-CONDITION:C: true
-     *
+     * <p>
      * A:LOCK-CONDITION:A: false
      * A:LOCK-CONDITION:B: true
      * A:LOCK-CONDITION:C: true
-     *
+     * <p>
      * ------this ia thread a------
-     *
+     * <p>
      * ------this ia thread b------
-     *
+     * <p>
      * ------this ia thread c------
+     * <p>
+     * C: thread-c spin...
+     * <p>
+     * B: thread-b spin...
+     * thread-c wait...
+     * <p>
+     * A: thread-a spin...
+     * thread-b wait...
+     * thread-c wait...
+     * <p>
+     * thread-a execute
+     * thread-b execute
+     * thread-c execute
      */
     private static void threada() {
         LOCK.lock();
