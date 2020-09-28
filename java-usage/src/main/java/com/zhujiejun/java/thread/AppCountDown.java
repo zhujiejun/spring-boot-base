@@ -10,11 +10,17 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class AppCountDown {
 
+    private static final int SLEEP = 1000;
+
     private static volatile int COUNTOR = 0;
 
     private static final ReentrantLock LOCK = new ReentrantLock();
 
-    private static final Condition CONDITION = LOCK.newCondition();
+    private static final Condition CONDITION_A = LOCK.newCondition();
+
+    private static final Condition CONDITION_B = LOCK.newCondition();
+
+    private static final Condition CONDITION_C = LOCK.newCondition();
 
     private static final CountDownLatch LATCH = new CountDownLatch(10);
 
@@ -80,28 +86,37 @@ public class AppCountDown {
      */
     private static void threada() {
         try {
-            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(800));
+            CONDITION_A.wait();
+            System.out.println("------this ia thread a------");
+            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            CONDITION_B.signal();
         }
-        System.out.println("this ia thread a");
     }
 
     private static void threadb() {
         try {
-            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(800));
+            CONDITION_B.wait();
+            System.out.println("------this ia thread b------");
+            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            CONDITION_C.signal();
         }
-        System.out.println("this ia thread b");
     }
 
     private static void threadc() {
         try {
-            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(800));
+            CONDITION_C.wait();
+            System.out.println("------this ia thread c------");
+            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            CONDITION_A.signal();
         }
-        System.out.println("this ia thread c");
     }
 }
