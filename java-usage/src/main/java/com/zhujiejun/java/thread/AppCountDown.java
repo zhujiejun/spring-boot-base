@@ -12,7 +12,13 @@ public class AppCountDown {
 
     private static final int SLEEP = 1000;
 
+    private static volatile String A = "A";
+    private static volatile String B = "B";
+    private static volatile String C = "C";
+    private static volatile String ORDER = A;
+
     private static volatile int COUNTOR = 0;
+
 
     private static final ReentrantLock LOCK = new ReentrantLock();
 
@@ -41,12 +47,12 @@ public class AppCountDown {
         THREAD_POOR.submit(AppCountDown::threada);
         THREAD_POOR.submit(AppCountDown::threadb);
         THREAD_POOR.submit(AppCountDown::threadc);
-        /*try {
+        try {
             TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        THREAD_POOR.shutdown();*/
+        THREAD_POOR.shutdown();
     }
 
     /**
@@ -85,38 +91,53 @@ public class AppCountDown {
      * b-c-a
      */
     private static void threada() {
+        LOCK.lock();
         try {
-            CONDITION_A.wait();
+            while (!ORDER.equals(A)) {
+                CONDITION_A.await();
+            }
             System.out.println("------this ia thread a------");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
+            ORDER = B;
+            CONDITION_B.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            CONDITION_B.signal();
+            LOCK.unlock();
         }
     }
 
     private static void threadb() {
+        LOCK.lock();
         try {
-            CONDITION_B.wait();
+            while (!ORDER.equals(B)) {
+                CONDITION_B.await();
+            }
             System.out.println("------this ia thread b------");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
+            ORDER = C;
+            CONDITION_C.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            CONDITION_C.signal();
+            LOCK.unlock();
         }
     }
 
     private static void threadc() {
+        LOCK.lock();
         try {
-            CONDITION_C.wait();
+            while (!ORDER.equals(C)) {
+                CONDITION_C.await();
+            }
             System.out.println("------this ia thread c------");
             TimeUnit.MILLISECONDS.sleep(new Random().nextInt(SLEEP));
+            ORDER = A;
+            CONDITION_A.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            CONDITION_A.signal();
+            LOCK.unlock();
         }
     }
 }
