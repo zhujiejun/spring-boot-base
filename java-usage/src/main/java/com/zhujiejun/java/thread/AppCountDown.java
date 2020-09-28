@@ -6,6 +6,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
@@ -14,6 +15,8 @@ public class AppCountDown {
     private static volatile int COUNTOR = 0;
 
     private static final ReentrantLock LOCK = new ReentrantLock();
+
+    private static final Condition CONDITION = LOCK.newCondition();
 
     private static final CountDownLatch LATCH = new CountDownLatch(10);
 
