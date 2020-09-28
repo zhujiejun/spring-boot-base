@@ -1,5 +1,9 @@
 package com.zhujiejun.java.thread;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -29,6 +33,8 @@ public class AppCountDown {
 
     private static final CountDownLatch LATCH = new CountDownLatch(10);
 
+    private static final String SAVE_PATH = "/home/cat/Downloads/thread.tmp";
+
     private static final ExecutorService THREAD_POOR = Executors.newFixedThreadPool(15);
 
     public static void main(String[] args) {
@@ -43,6 +49,14 @@ public class AppCountDown {
         THREAD_POOR.shutdown();
         System.out.println("total time consumption is " + stopwatch.elapsed(TimeUnit.NANOSECONDS) + " ns.");*/
         /*--------------------------------------------------------------------------------------------------*/
+        File file = new File(SAVE_PATH);
+        try {
+            if (!file.exists()) file.createNewFile();
+            System.setOut(new PrintStream(new FileOutputStream(file)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         THREAD_POOR.submit(AppCountDown::threadb);
         THREAD_POOR.submit(AppCountDown::threadc);
         THREAD_POOR.submit(AppCountDown::threada);
