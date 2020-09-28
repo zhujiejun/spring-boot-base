@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("all")
 public class ObserverApp003 {
 
     private static final String SAVE_PATH = "/home/cat/Downloads/ObserverApp003.tmp";
