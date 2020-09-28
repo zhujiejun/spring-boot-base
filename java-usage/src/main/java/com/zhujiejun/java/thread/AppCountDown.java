@@ -10,12 +10,12 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class AppCountDown {
 
-    private static final int SLEEP = 1000;
-
-    private static volatile String A = "A";
-    private static volatile String B = "B";
-    private static volatile String C = "C";
+    private static final String A = "A";
+    private static final String B = "B";
+    private static final String C = "C";
     private static volatile String ORDER = A;
+
+    private static final int SLEEP = 2000;
 
     private static volatile int COUNTOR = 0;
 
