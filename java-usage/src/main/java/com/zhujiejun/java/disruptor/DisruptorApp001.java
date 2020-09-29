@@ -50,7 +50,7 @@ public class DisruptorApp001 {
         //启动disruptor的线程
         disruptor.start();
 
-        //获取RingBuffer
+        //获取RingBuffer对象
         RingBuffer<Element> ringBuffer = disruptor.getRingBuffer();
         for (int num = 0; num < 12345; num++) {
             //获取下一个可用位置的下标
