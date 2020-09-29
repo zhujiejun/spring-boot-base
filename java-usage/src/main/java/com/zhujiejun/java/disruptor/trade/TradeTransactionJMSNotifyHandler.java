@@ -10,7 +10,7 @@ public class TradeTransactionJMSNotifyHandler implements EventHandler<TradeTrans
     @Override
     public void onEvent(TradeTransaction event, long sequence, boolean endOfBatch) throws Exception {
         //do something...
-        System.out.println("----------负责发送JMS消息的消费者C3发送JMS消息中...-----------");
+        System.out.println("----------消费者C3发送JMS消息中...-----------");
         TimeUnit.MILLISECONDS.sleep(new Random().nextInt(1000));
     }
 }

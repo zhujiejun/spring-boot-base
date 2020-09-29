@@ -8,7 +8,7 @@ import java.util.UUID;
 public class TradeTransactionInDBHandler implements EventHandler<TradeTransaction> {
     @Override
     public void onEvent(TradeTransaction event, long sequence, boolean endOfBatch) throws Exception {
-        System.out.println("----------负责数据存储的消费者C2处理交易中...-----------");
+        System.out.println("----------消费者C2数据存储中...-----------");
         this.onEvent(event);
     }
 
