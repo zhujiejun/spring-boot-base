@@ -30,14 +30,14 @@ public class DisruptorApp001 {
         //指定RingBuffer的大小
         int bufferSize = 16;
 
-        //RingBuffer生产工厂,初始化RingBuffer的时候使用
-        EventFactory<Element> eventFactory = Element::new;
+        //阻塞策略
+        WaitStrategy waitStrategy = new BlockingWaitStrategy();
 
         //生产者的线程工厂
         ThreadFactory threadFactory = code -> new Thread(code, "SimpleThread");
 
-        //阻塞策略
-        WaitStrategy waitStrategy = new BlockingWaitStrategy();
+        //RingBuffer生产工厂,初始化RingBuffer的时候使用
+        EventFactory<Element> eventFactory = Element::new;
 
         //处理Event的handler
         EventHandler<Element> eventHandler = (element, sequence, endOfBatch) -> System.out.println("Element: " + element.get());
