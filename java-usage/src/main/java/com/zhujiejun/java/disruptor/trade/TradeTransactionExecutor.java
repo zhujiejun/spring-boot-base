@@ -16,13 +16,14 @@ import java.util.concurrent.TimeUnit;
 
 public class TradeTransactionExecutor {
     private static final int bufferSize = 1024;
-    private static final CountDownLatch latch = new CountDownLatch(1);
+    private static final CountDownLatch latch = new CountDownLatch(2);
     private static final ExecutorService executor = Executors.newFixedThreadPool(5);
     private static final String SAVE_PATH = "/opt/data/spring/boot/java-usage/TradeTransaction.tmp";
+
     public static void main(String[] args) throws Exception {
-        File file = new File(SAVE_PATH);
+        /*File file = new File(SAVE_PATH);
         if (!file.exists()) file.createNewFile();
-        System.setOut(new PrintStream(new FileOutputStream(file)));
+        System.setOut(new PrintStream(new FileOutputStream(file)));*/
 
         Stopwatch watch = Stopwatch.createStarted();
         Disruptor<TradeTransaction> disruptor = new Disruptor<>(TradeTransaction::new, bufferSize, executor,
@@ -40,6 +41,6 @@ public class TradeTransactionExecutor {
         latch.await();//等待生产者完事.
         disruptor.shutdown();
         executor.shutdown();
-        System.out.println("total time consumption is " + watch.elapsed(TimeUnit.MILLISECONDS) + " ms.");
+        System.out.println("total time consumption is " + watch.elapsed(TimeUnit.MILLISECONDS) + " ms, "+watch.elapsed(TimeUnit.SECONDS)+" s.");
     }
 }

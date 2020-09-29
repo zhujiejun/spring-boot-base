@@ -14,6 +14,6 @@ public class TradeTransactionInDBHandler implements EventHandler<TradeTransactio
 
     public void onEvent(TradeTransaction event) throws Exception {
         event.setId(UUID.randomUUID().toString());
-        System.out.println(event.getId());
+        //System.out.println(event.getId());
     }
 }
