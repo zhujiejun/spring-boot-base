@@ -68,6 +68,7 @@ public class DisruptorApp001 {
             }
             TimeUnit.MILLISECONDS.sleep(15);
         }
-        System.out.println("watch.elapsed(TimeUnit.NANOSECONDS) = " + watch.elapsed(TimeUnit.NANOSECONDS)+" nas.");
+        System.out.println("total time consumption is " + watch.elapsed(TimeUnit.NANOSECONDS)+" nas.");
+        disruptor.shutdown();
     }
 }
