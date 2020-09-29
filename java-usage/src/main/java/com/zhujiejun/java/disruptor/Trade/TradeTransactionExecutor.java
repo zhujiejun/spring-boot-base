@@ -6,6 +6,9 @@ import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.EventHandlerGroup;
 import com.lmax.disruptor.dsl.ProducerType;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,8 +18,13 @@ public class TradeTransactionExecutor {
     private static final int bufferSize = 1024;
     private static final CountDownLatch latch = new CountDownLatch(1);
     private static final ExecutorService executor = Executors.newFixedThreadPool(4);
+    private static final String SAVE_PATH = "/home/cat/Downloads/TradeTransaction.tmp";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(SAVE_PATH);
+        if (!file.exists()) file.createNewFile();
+        System.setOut(new PrintStream(new FileOutputStream(file)));
+
         Stopwatch watch = Stopwatch.createStarted();
         Disruptor<TradeTransaction> disruptor = new Disruptor<>(TradeTransaction::new, bufferSize, executor,
                 ProducerType.SINGLE, new BusySpinWaitStrategy());
