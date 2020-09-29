@@ -18,7 +18,7 @@ public class TradeTransactionExecutor {
     private static final int bufferSize = 1024;
     private static final CountDownLatch latch = new CountDownLatch(1);
     private static final ExecutorService executor = Executors.newFixedThreadPool(4);
-    private static final String SAVE_PATH = "/home/cat/Downloads/TradeTransaction.tmp";
+    private static final String SAVE_PATH = "/home/cat/Downloads/file/TradeTransaction.tmp";
 
     public static void main(String[] args) throws Exception {
         File file = new File(SAVE_PATH);
