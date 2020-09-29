@@ -10,7 +10,7 @@ public class TradeTransactionVasConsumer implements EventHandler<TradeTransactio
     @Override
     public void onEvent(TradeTransaction event, long sequence, boolean endOfBatch) throws Exception {
         //do something...
-        System.out.println("----------消费者C1处理增值业务中...-----------");
+        System.out.println("----------" + sequence + ".消费者C1 处理增值业务中...-----------");
         TimeUnit.MILLISECONDS.sleep(new Random().nextInt(1000));
     }
 }
