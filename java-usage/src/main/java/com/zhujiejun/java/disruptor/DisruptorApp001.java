@@ -33,7 +33,7 @@ public class DisruptorApp001 {
         EventFactory<Element> eventFactory = Element::new;
 
         //生产者的线程工厂
-        ThreadFactory threadFactory = r -> new Thread(r, "simpleThread");
+        ThreadFactory threadFactory = code -> new Thread(code, "simpleThread");
 
         //阻塞策略
         WaitStrategy waitStrategy = new BlockingWaitStrategy();
@@ -52,18 +52,18 @@ public class DisruptorApp001 {
 
         //获取RingBuffer
         RingBuffer<Element> ringBuffer = disruptor.getRingBuffer();
-        for (int l = 0; true; l++) {
+        for (int num = 0; num < 12345; num++) {
             //获取下一个可用位置的下标
-            long sequence = ringBuffer.next();
+            long index = ringBuffer.next();
             try {
                 //返回可用位置的元素
-                Element event = ringBuffer.get(sequence);
+                Element event = ringBuffer.get(index);
                 //设置该位置元素的值
-                event.set(l);
+                event.set(num);
             } finally {
-                ringBuffer.publish(sequence);
+                ringBuffer.publish(index);
             }
-            TimeUnit.MILLISECONDS.sleep(10);
+            TimeUnit.MILLISECONDS.sleep(15);
         }
     }
 }
