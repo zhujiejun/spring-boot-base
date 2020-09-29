@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TradeTransactionExecutor {
     private static final int bufferSize = 1024;
-    private static final CountDownLatch latch = new CountDownLatch(2);
+    private static final CountDownLatch latch = new CountDownLatch(1);
     private static final ExecutorService executor = Executors.newFixedThreadPool(5);
     private static final String SAVE_PATH = "/opt/data/spring/boot/java-usage/TradeTransaction.tmp";
 
