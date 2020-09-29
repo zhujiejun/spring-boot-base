@@ -1,4 +1,4 @@
-package com.zhujiejun.java.disruptor.Trade;
+package com.zhujiejun.java.disruptor.trade;
 
 //1.交易
 public class TradeTransaction {

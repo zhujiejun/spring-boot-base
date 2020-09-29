@@ -1,4 +1,4 @@
-package com.zhujiejun.java.disruptor.Trade;
+package com.zhujiejun.java.disruptor.trade;
 
 import com.google.common.base.Stopwatch;
 import com.lmax.disruptor.BusySpinWaitStrategy;
