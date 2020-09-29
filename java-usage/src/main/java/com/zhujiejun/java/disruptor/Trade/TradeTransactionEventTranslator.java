@@ -4,7 +4,7 @@ import com.lmax.disruptor.EventTranslator;
 
 import java.util.Random;
 
-//P1
+//交易网关收到交易P1
 public class TradeTransactionEventTranslator implements EventTranslator<TradeTransaction> {
     private static final Random RANDOM = new Random();
 
