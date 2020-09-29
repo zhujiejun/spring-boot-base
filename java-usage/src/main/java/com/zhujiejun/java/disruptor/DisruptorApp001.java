@@ -1,5 +1,6 @@
 package com.zhujiejun.java.disruptor;
 
+import com.google.common.base.Stopwatch;
 import com.lmax.disruptor.BlockingWaitStrategy;
 import com.lmax.disruptor.EventFactory;
 import com.lmax.disruptor.EventHandler;
@@ -33,7 +34,7 @@ public class DisruptorApp001 {
         EventFactory<Element> eventFactory = Element::new;
 
         //生产者的线程工厂
-        ThreadFactory threadFactory = code -> new Thread(code, "simpleThread");
+        ThreadFactory threadFactory = code -> new Thread(code, "SimpleThread");
 
         //阻塞策略
         WaitStrategy waitStrategy = new BlockingWaitStrategy();
@@ -42,7 +43,8 @@ public class DisruptorApp001 {
         EventHandler<Element> eventHandler = (element, sequence, endOfBatch) -> System.out.println("Element: " + element.get());
 
         //创建disruptor,采用单生产者模式
-        Disruptor<Element> disruptor = new Disruptor(eventFactory, bufferSize, threadFactory, ProducerType.SINGLE, waitStrategy);
+        //Disruptor<Element> disruptor = new Disruptor(eventFactory, bufferSize, threadFactory, ProducerType.SINGLE, waitStrategy);
+        Disruptor<Element> disruptor = new Disruptor(eventFactory, bufferSize, threadFactory, ProducerType.MULTI, waitStrategy);
 
         //设置EventHandler
         disruptor.handleEventsWith(eventHandler);
@@ -50,9 +52,10 @@ public class DisruptorApp001 {
         //启动disruptor的线程
         disruptor.start();
 
+        Stopwatch watch = Stopwatch.createStarted();
         //获取RingBuffer对象
         RingBuffer<Element> ringBuffer = disruptor.getRingBuffer();
-        for (int num = 0; num < 12345; num++) {
+        for (int num = 0; num < 1000; num++) {
             //获取下一个可用位置的下标
             long index = ringBuffer.next();
             try {
@@ -65,5 +68,6 @@ public class DisruptorApp001 {
             }
             TimeUnit.MILLISECONDS.sleep(15);
         }
+        System.out.println("watch.elapsed(TimeUnit.NANOSECONDS) = " + watch.elapsed(TimeUnit.NANOSECONDS)+" nas.");
     }
 }
