@@ -6,3 +6,5 @@ project(':java-usage') {
         implementation group: 'com.typesafe.akka', name: 'akka-actor_2.13', version: '2.6.9'
     }
 }
+// ./gradlew :java-usage:clean :java-usage:build
+mainClassName = 'com.zhujiejun.java.disruptor.trade.TradeTransactionExecutor'
