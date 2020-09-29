@@ -32,15 +32,16 @@ public class TradeTransactionExecutor {
         EventHandlerGroup<TradeTransaction> handlerGroup = disruptor.handleEventsWith(new TradeTransactionVasConsumer(),
                 new TradeTransactionInDBHandler());
 
-        TradeTransactionJMSNotifyHandler jmsConsumer = new TradeTransactionJMSNotifyHandler();
+        TradeTransactionJMSNotifyHandler jmsNotifyHandler = new TradeTransactionJMSNotifyHandler();
         //声明在C1,C2完事之后执行JMS消息发送操作 也就是流程走到C3
-        handlerGroup.then(jmsConsumer);
+        handlerGroup.then(jmsNotifyHandler);
 
         disruptor.start();
         executor.submit(new TradeTransactionPublisher(latch, disruptor));
         latch.await();//等待生产者完事.
         disruptor.shutdown();
         executor.shutdown();
-        System.out.println("total time consumption is " + watch.elapsed(TimeUnit.MILLISECONDS) + " ms, "+watch.elapsed(TimeUnit.SECONDS)+" s.");
+        System.out.println("total time consumption is " + watch.elapsed(TimeUnit.MILLISECONDS) + " ms, approximately "
+                + watch.elapsed(TimeUnit.SECONDS) + " s.");
     }
 }
