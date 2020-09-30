@@ -8,7 +8,7 @@ import scala.concurrent.duration.Duration;
 
 import java.util.concurrent.TimeUnit;
 
-public class App001 {
+public class App {
     public static void main(String[] args) throws Exception {
         final ActorSystem actorSystem = ActorSystem.create("actorSystem");
         //创建一个到greeter Actor的管道
