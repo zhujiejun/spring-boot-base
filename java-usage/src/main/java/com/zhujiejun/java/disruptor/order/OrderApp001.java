@@ -8,7 +8,7 @@
 //import java.util.concurrent.Executors;
 //import java.util.concurrent.ThreadFactory;
 //
-//public class DisruptorApp002 {
+//public class OrderApp001 {
 //    public static void main(String[] args) {
 //        ThreadFactory producerFactory = Executors.defaultThreadFactory();
 //        LongEventFactory eventFactory = new LongEventFactory();
