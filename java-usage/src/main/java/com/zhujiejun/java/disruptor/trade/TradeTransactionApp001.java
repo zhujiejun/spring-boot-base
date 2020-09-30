@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class TradeTransactionExecutor {
+public class TradeTransactionApp001 {
     private static final int BUFFER_SIZE = 1024;
     private static final CountDownLatch LATCH = new CountDownLatch(1);
     private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(5);
