@@ -49,7 +49,7 @@ public class OrderApp001 {
         disruptor.start();
         Stopwatch watch = Stopwatch.createStarted();
         THREAD_POOL.submit(() -> {
-            disruptor.publishEvent((orderEvent, sequence) -> orderEvent.setId(RandomStringUtils.random(18)));
+            disruptor.publishEvent((orderEvent, sequence) -> orderEvent.setId(RandomStringUtils.randomAlphanumeric(18)));
             LATCH.countDown();
         });
         LATCH.await();
