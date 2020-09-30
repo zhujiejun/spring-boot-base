@@ -11,6 +11,7 @@ public class TradeTransactionVasConsumer implements EventHandler<TradeTransactio
     public void onEvent(TradeTransaction event, long sequence, boolean endOfBatch) throws Exception {
         //do something...
         System.out.println("----------" + sequence + ".消费者C1 处理增值业务中...-----------");
+        System.out.println("----------" + sequence + ".消费者C1 current price is " + event.getPrice() + "-----------");
         TimeUnit.MILLISECONDS.sleep(new Random().nextInt(1000));
     }
 }
