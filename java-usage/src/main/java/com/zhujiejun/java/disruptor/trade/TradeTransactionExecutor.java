@@ -12,9 +12,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class TradeTransactionExecutor {
-    private static final int bufferSize = 1024;
-    private static final CountDownLatch latch = new CountDownLatch(1);
-    private static final ExecutorService executor = Executors.newFixedThreadPool(5);
+    private static final int BUFFER_SIZE = 1024;
+    private static final CountDownLatch LATCH = new CountDownLatch(1);
+    private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(5);
     private static final String SAVE_PATH = "/opt/data/spring/boot/java-usage/TradeTransaction.tmp";
 
     public static void main(String[] args) throws Exception {
@@ -23,7 +23,7 @@ public class TradeTransactionExecutor {
         System.setOut(new PrintStream(new FileOutputStream(file)));*/
 
         Stopwatch watch = Stopwatch.createStarted();
-        Disruptor<TradeTransaction> disruptor = new Disruptor<>(TradeTransaction::new, bufferSize, executor,
+        Disruptor<TradeTransaction> disruptor = new Disruptor<>(TradeTransaction::new, BUFFER_SIZE, THREAD_POOL,
                 ProducerType.SINGLE, new BusySpinWaitStrategy());
 
         EventHandlerGroup<TradeTransaction> handlerGroup = disruptor.handleEventsWith(new TradeTransactionVasConsumer(),
@@ -34,10 +34,10 @@ public class TradeTransactionExecutor {
         handlerGroup.then(jmsNotifyHandler);
 
         disruptor.start();
-        executor.submit(new TradeTransactionPublisher(latch, disruptor));
-        latch.await();//等待生产者完事.
+        THREAD_POOL.submit(new TradeTransactionPublisher(LATCH, disruptor));
+        LATCH.await();//等待生产者完事.
         disruptor.shutdown();
-        executor.shutdown();
+        THREAD_POOL.shutdown();
         System.out.println("total time consumption is " + watch.elapsed(TimeUnit.MILLISECONDS) + " ms, approximately "
                 + watch.elapsed(TimeUnit.SECONDS) + " s.");
     }

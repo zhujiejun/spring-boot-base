@@ -1,5 +1,6 @@
 project(':java-usage') {
     dependencies {
+        implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
         implementation group: 'com.google.guava', name: 'guava', version: '29.0-jre'
         implementation group: 'io.reactivex.rxjava3', name: 'rxjava', version: '3.0.6'
         implementation group: 'com.lmax', name: 'disruptor', version: '3.4.2'
