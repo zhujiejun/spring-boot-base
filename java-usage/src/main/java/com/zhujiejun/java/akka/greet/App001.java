@@ -8,7 +8,7 @@ import scala.concurrent.duration.Duration;
 
 import java.util.concurrent.TimeUnit;
 
-public class GreetApp001 {
+public class App001 {
     public static void main(String[] args) throws Exception {
         final ActorSystem actorSystem = ActorSystem.create("actorSystem");
         //创建一个到greeter Actor的管道
@@ -17,7 +17,7 @@ public class GreetApp001 {
         final Inbox inbox = Inbox.create(actorSystem);
 
         //先发第一个消息,消息类型为Greetee
-        greeter.tell(new Greetee("world"), ActorRef.noSender());
+        greeter.tell(new Greetee("zhujiejun"), ActorRef.noSender());
         //真正的发送消息,消息体为Greet
         inbox.send(greeter, new Greet());
         //等待5秒尝试接收Greeter返回的消息
@@ -25,17 +25,17 @@ public class GreetApp001 {
         System.out.println("1.Greeting: " + greeting1.message);
 
         //发送第三个消息,修改名字
-        greeter.tell(new Greetee("akka"), ActorRef.noSender());
+        greeter.tell(new Greetee("pangyao"), ActorRef.noSender());
         //发送第四个消息
         inbox.send(greeter, new Greet());
         //等待5秒尝试接收Greeter返回的消息
         Greeting greeting2 = (Greeting) inbox.receive(Duration.create(5, TimeUnit.SECONDS));
         System.out.println("2.Greeting: " + greeting2.message);
 
-        /**
-         * hello, akka
-         * hello, akka
-         */
+        //1.Greeting: hello, world
+        //2.Greeting: hello, akka
+        //hello, akka
+        //hello, akka
         //新创建一个Actor的管道
         ActorRef greetPrinter = actorSystem.actorOf(Props.create(GreetPrinter.class));
         //使用schedule每一秒发送一个Greet消息给greeterActor,然后把greeterActor的消息返回给greetPrinterActor
