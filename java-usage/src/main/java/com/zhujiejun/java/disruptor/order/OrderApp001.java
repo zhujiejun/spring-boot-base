@@ -19,6 +19,8 @@ public class OrderApp001 {
     private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(8);
 
     public static void main(String[] args) throws Exception {
+        Stopwatch watch = Stopwatch.createStarted();
+
         FirstEventHandler firstEventHandler = new FirstEventHandler();
         SecondEventHandler secondHandler = new SecondEventHandler();
         ThirdEventHandler thirdEventHandler = new ThirdEventHandler();
@@ -47,7 +49,6 @@ public class OrderApp001 {
         disruptor.after(secondHandler, fourthEventHandler).handleEventsWith(lastEventHandler);
 
         disruptor.start();
-        Stopwatch watch = Stopwatch.createStarted();
         THREAD_POOL.submit(() -> {
             disruptor.publishEvent((orderEvent, sequence) -> orderEvent.setId(RandomStringUtils.randomAlphanumeric(18)));
             LATCH.countDown();
