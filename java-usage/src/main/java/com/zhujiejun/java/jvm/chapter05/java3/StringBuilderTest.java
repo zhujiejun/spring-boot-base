@@ -1,4 +1,4 @@
-package com.atguigu.java3;
+package com.zhujiejun.java.jvm.chapter05.java3;
 
 /**
  * 面试题：

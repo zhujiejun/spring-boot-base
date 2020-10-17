@@ -1,4 +1,4 @@
-package com.atguigu.java2;
+package com.zhujiejun.java.jvm.chapter05.java2;
 
 /**
  * 体会invokedynamic指令

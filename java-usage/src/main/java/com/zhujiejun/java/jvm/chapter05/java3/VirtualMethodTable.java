@@ -1,4 +1,4 @@
-package com.atguigu.java3;
+package com.zhujiejun.java.jvm.chapter05.java3;
 
 /**
  * 虚方法表的举例

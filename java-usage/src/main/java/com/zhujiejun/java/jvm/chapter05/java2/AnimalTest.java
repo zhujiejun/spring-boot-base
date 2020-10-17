@@ -1,4 +1,4 @@
-package com.atguigu.java2;
+package com.zhujiejun.java.jvm.chapter05.java2;
 
 /**
  * 说明早期绑定和晚期绑定的例子

@@ -1,4 +1,4 @@
-package com.atguigu.java3;
+package com.zhujiejun.java.jvm.chapter05.java3;
 
 import java.io.FileReader;
 import java.io.IOException;

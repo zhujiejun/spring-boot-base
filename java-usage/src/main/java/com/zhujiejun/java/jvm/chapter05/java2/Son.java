@@ -1,4 +1,4 @@
-package com.atguigu.java2;
+package com.zhujiejun.java.jvm.chapter05.java2;
 
 /**
  * 解析调用中非虚方法、虚方法的测试
