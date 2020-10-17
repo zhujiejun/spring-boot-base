@@ -1,0 +1,6 @@
+//java basic usage
+project(':java-usage') {
+    dependencies {
+        implementation 'junit:junit:4.13'
+    }
+}
