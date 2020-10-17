@@ -1,4 +1,4 @@
-package com.atguigu.java;
+package com.zhujiejun.java.jvm.chapter09.java;
 
 /**
  *  测试设置方法区大小参数的默认值

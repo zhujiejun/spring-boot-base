@@ -1,4 +1,4 @@
-package com.atguigu.java1;
+package com.zhujiejun.java.jvm.chapter08.java1;
 
 /**
  * 测试-XX:UseTLAB参数是否开启的情况:默认情况是开启的

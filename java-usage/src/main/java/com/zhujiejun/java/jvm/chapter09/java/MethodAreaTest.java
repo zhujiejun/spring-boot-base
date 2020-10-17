@@ -1,4 +1,4 @@
-package com.atguigu.java;
+package com.zhujiejun.java.jvm.chapter09.java;
 
 /**
  * non-final的类变量

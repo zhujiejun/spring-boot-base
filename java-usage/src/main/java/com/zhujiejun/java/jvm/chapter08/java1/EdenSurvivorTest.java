@@ -1,4 +1,4 @@
-package com.atguigu.java1;
+package com.zhujiejun.java.jvm.chapter08.java1;
 
 /**
  * -Xms600m -Xmx600m

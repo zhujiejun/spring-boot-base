@@ -1,4 +1,4 @@
-package com.atguigu.java;
+package com.zhujiejun.java.jvm.chapter05.java;
 
 /**
  * 演示栈中的异常:StackOverflowError

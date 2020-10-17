@@ -1,4 +1,4 @@
-package com.atguigu.java2;
+package com.zhujiejun.java.jvm.chapter08.java2;
 
 /**
  * 逃逸分析

@@ -1,4 +1,4 @@
-package com.atguigu.java;
+package com.zhujiejun.java.jvm.chapter05.java;
 
 /**
  * @author shkstart

@@ -1,4 +1,4 @@
-package com.atguigu.java3;
+package com.zhujiejun.java.jvm.chapter13.java3;
 
 /**
  * String的垃圾回收:

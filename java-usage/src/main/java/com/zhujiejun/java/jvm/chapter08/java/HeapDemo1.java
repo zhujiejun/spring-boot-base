@@ -1,4 +1,4 @@
-package com.atguigu.java;
+package com.zhujiejun.java.jvm.chapter08.java;
 
 /**
  * -Xms20m -Xmx20m

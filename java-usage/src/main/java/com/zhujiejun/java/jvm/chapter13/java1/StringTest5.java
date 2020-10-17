@@ -1,4 +1,4 @@
-package com.atguigu.java1;
+package com.zhujiejun.java.jvm.chapter13.java1;
 
 import org.junit.Test;
 

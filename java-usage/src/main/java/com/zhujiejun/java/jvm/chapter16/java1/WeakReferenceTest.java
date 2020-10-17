@@ -1,4 +1,4 @@
-package com.atguigu.java1;
+package com.zhujiejun.java.jvm.chapter16.java1;
 
 import java.lang.ref.WeakReference;
 

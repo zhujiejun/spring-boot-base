@@ -1,4 +1,4 @@
-package com.atguigu.java1;
+package com.zhujiejun.java.jvm.chapter09.java1;
 
 /**
  * 《深入理解Java虚拟机》中的案例：

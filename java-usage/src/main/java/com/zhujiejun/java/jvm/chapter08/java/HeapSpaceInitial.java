@@ -1,4 +1,4 @@
-package com.atguigu.java;
+package com.zhujiejun.java.jvm.chapter08.java;
 
 /**
  * 1. 设置堆空间大小的参数
