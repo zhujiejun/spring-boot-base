@@ -1,7 +1,7 @@
 package com.zhujiejun.java.test;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -11,14 +11,13 @@ import java.util.stream.IntStream;
 @SuppressWarnings("all")
 public class ConcurrentHashMapTest {
 
-    private static final CountDownLatch LATCH = new CountDownLatch(4);
-    private static final Map<String, String> map = new HashMap<>();
-    //private static final Map<String, String> map = new ConcurrentHashMap<>();
-    private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(4);
+    private static final CountDownLatch LATCH = new CountDownLatch(6);
+    //private static final Map<String, String> map = new HashMap<>();
+    private static final Map<String, String> map = new ConcurrentHashMap<>();
+    private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(6);
 
     private static void add(int begin, int end) {
-        String name = Thread.currentThread().getName();
-        IntStream.rangeClosed(begin, end).forEach(i -> map.put(String.format("%s:k%03d", name, i), String.format("v%03d", i)));
+        IntStream.rangeClosed(begin, end).forEach(i -> map.put(String.format("k%03d", i), String.format("v%03d", i)));
         try {
             TimeUnit.MILLISECONDS.sleep(50);
         } catch (InterruptedException e) {
@@ -53,10 +52,12 @@ public class ConcurrentHashMapTest {
         THREAD_POOL.submit(() -> delete("k3"));
         THREAD_POOL.submit(() -> add(21, 21));
         THREAD_POOL.submit(() -> delete("k5"));
+        THREAD_POOL.submit(() -> delete("k8"));
+        THREAD_POOL.submit(() -> add(22, 25));
         LATCH.await();
-        map.keySet().stream().count();
-        map.entrySet().stream()/*.sorted((a, b) -> a.getKey().concat("-").concat(a.getValue())
-                .compareTo(b.getKey().concat("-").concat(b.getValue())))*/
+        System.out.println(map.keySet().stream().count());
+        map.entrySet().stream().sorted((a, b) -> a.getKey().concat("-").concat(a.getValue())
+                .compareTo(b.getKey().concat("-").concat(b.getValue())))
                 .forEach(entry -> System.out.printf("%s---%s%n", entry.getKey(), entry.getValue()));
 
         /*THREAD_POOL.submit(() -> put(1, 50));
