@@ -49,12 +49,13 @@ public class ConcurrentHashMapTest {
 
     public static void main(String[] args) throws Exception {
         THREAD_POOL.submit(() -> add(1, 20));
-        THREAD_POOL.submit(() -> delete("k3"));
+        THREAD_POOL.submit(() -> delete("k003"));
         THREAD_POOL.submit(() -> add(21, 21));
-        THREAD_POOL.submit(() -> delete("k5"));
-        THREAD_POOL.submit(() -> delete("k8"));
+        THREAD_POOL.submit(() -> delete("k008"));
+        THREAD_POOL.submit(() -> delete("k021"));
         THREAD_POOL.submit(() -> add(22, 25));
         LATCH.await();
+        //delete("k003");
         System.out.println(map.keySet().stream().count());
         map.entrySet().stream().sorted((a, b) -> a.getKey().concat("-").concat(a.getValue())
                 .compareTo(b.getKey().concat("-").concat(b.getValue())))
