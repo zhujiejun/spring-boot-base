@@ -1,8 +1,13 @@
 package com.zhujiejun.java.nio;
 
+import java.net.InetSocketAddress;
+import java.net.StandardSocketOptions;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.SeekableByteChannel;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.SocketChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,5 +38,25 @@ public class NIOTest {
         readChannel.read(readBuffer);
         readBuffer.flip();
         System.out.printf("the path is %s\n", new String(readBuffer.array()));
+        /*-------------------------------------------------------------------*/
+        String hello = "hello";
+        Selector selector = Selector.open();
+        SocketChannel socketChannel = SocketChannel.open(new InetSocketAddress("192.168.100.100", 3000));
+
+        //write
+        /*ByteBuffer socketWriteBuffer = ByteBuffer.allocate(hello.length());
+        socketWriteBuffer.put(hello.getBytes());
+        socketWriteBuffer.flip();
+        socketChannel.write(socketWriteBuffer);*/
+
+        //read
+        socketChannel.configureBlocking(false);
+        socketChannel.setOption(StandardSocketOptions.SO_KEEPALIVE, Boolean.TRUE);
+        socketChannel.register(selector, SelectionKey.OP_READ);
+        selector.select();
+        ByteBuffer socketReadBuffer = ByteBuffer.allocate(10);
+        socketChannel.read(socketReadBuffer);
+        String msg = new String(socketReadBuffer.array());
+        System.out.println(msg);
     }
 }
