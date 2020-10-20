@@ -1,6 +1,10 @@
 package com.zhujiejun.java.audit;
 
 /**
+ * ++i i++
+ */
+
+/**
  * iconst_1 //Push int constant onto the operand stack
  * istore_1 //Store int into local variable
  * iload_1  //Load int from local variable
