@@ -9,7 +9,70 @@ package com.zhujiejun.java.audit;
  * istore_1 //Store int into local variable from operand stack and remove the top of stack
  * iload_1  //Load int from local variable onto the operand stack
  * iinc	    //Increment local variable by constant
- * ---------------------
+ * ------------------------------------------------
+ * Constant pool:
+ * #1 = Methodref          #13.#36        // java/lang/Object."<init>":()V
+ * #2 = Fieldref           #37.#38        // java/lang/System.out:Ljava/io/PrintStream;
+ * #3 = Class              #39            // java/lang/StringBuilder
+ * #4 = Methodref          #3.#36         // java/lang/StringBuilder."<init>":()V
+ * #5 = String             #40            // i =
+ * #6 = Methodref          #3.#41         // java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+ * #7 = Methodref          #3.#42         // java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+ * #8 = Methodref          #3.#43         // java/lang/StringBuilder.toString:()Ljava/lang/String;
+ * #9 = Methodref          #44.#45        // java/io/PrintStream.println:(Ljava/lang/String;)V
+ * #10 = String             #46            // j =
+ * #11 = String             #47            // k =
+ * #12 = Class              #48            // com/zhujiejun/java/audit/Test001
+ * #13 = Class              #49            // java/lang/Object
+ * #14 = Utf8               <init>
+ * #15 = Utf8               ()V
+ * #16 = Utf8               Code
+ * #17 = Utf8               LineNumberTable
+ * #18 = Utf8               LocalVariableTable
+ * #19 = Utf8               this
+ * #20 = Utf8               Lcom/zhujiejun/java/audit/Test001;
+ * #21 = Utf8               main
+ * #22 = Utf8               ([Ljava/lang/String;)V
+ * #23 = Utf8               args
+ * #24 = Utf8               [Ljava/lang/String;
+ * #25 = Utf8               i
+ * #26 = Utf8               I
+ * #27 = Utf8               j
+ * #28 = Utf8               k
+ * #29 = Utf8               StackMapTable
+ * #30 = Class              #24            // "[Ljava/lang/String;"
+ * #31 = Class              #49            // java/lang/Object
+ * #32 = Class              #50            // java/lang/Throwable
+ * #33 = Utf8               MethodParameters
+ * #34 = Utf8               SourceFile
+ * #35 = Utf8               Test001.java
+ * #36 = NameAndType        #14:#15        // "<init>":()V
+ * #37 = Class              #51            // java/lang/System
+ * #38 = NameAndType        #52:#53        // out:Ljava/io/PrintStream;
+ * #39 = Utf8               java/lang/StringBuilder
+ * #40 = Utf8               i =
+ * #41 = NameAndType        #54:#55        // append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+ * #42 = NameAndType        #54:#56        // append:(I)Ljava/lang/StringBuilder;
+ * #43 = NameAndType        #57:#58        // toString:()Ljava/lang/String;
+ * #44 = Class              #59            // java/io/PrintStream
+ * #45 = NameAndType        #60:#61        // println:(Ljava/lang/String;)V
+ * #46 = Utf8               j =
+ * #47 = Utf8               k =
+ * #48 = Utf8               com/zhujiejun/java/audit/Test001
+ * #49 = Utf8               java/lang/Object
+ * #50 = Utf8               java/lang/Throwable
+ * #51 = Utf8               java/lang/System
+ * #52 = Utf8               out
+ * #53 = Utf8               Ljava/io/PrintStream;
+ * #54 = Utf8               append
+ * #55 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+ * #56 = Utf8               (I)Ljava/lang/StringBuilder;
+ * #57 = Utf8               toString
+ * #58 = Utf8               ()Ljava/lang/String;
+ * #59 = Utf8               java/io/PrintStream
+ * #60 = Utf8               println
+ * #61 = Utf8               (Ljava/lang/String;)V
+ * ------------------------------------------------
  * <p>int i = 1;
  * 0: iconst_1
  * 1: istore_1
@@ -64,6 +127,23 @@ package com.zhujiejun.java.audit;
  * 93: invokevirtual #8                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
  * 96: invokevirtual #9                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
  * 99: return
+ * <p>synchronized
+ * 99: ldc           #12                 // class com/zhujiejun/java/audit/Test001
+ * 101: dup
+ * 102: astore        4
+ * 104: monitorenter
+ * 105: iinc          1, 1
+ * 108: iload_1
+ * 109: istore_1
+ * 110: aload         4
+ * 112: monitorexit
+ * 113: goto          124
+ * 116: astore        5
+ * 118: aload         4
+ * 120: monitorexit
+ * 121: aload         5
+ * 123: athrow
+ * 124: return
  */
 public class Test001 {
     public static void main(String[] args) {
@@ -77,5 +157,9 @@ public class Test001 {
         System.out.println("i = " + i);//i=4
         System.out.println("j = " + j);//j=1
         System.out.println("k = " + k);//k=11
+
+        synchronized (Test001.class) {
+            i = ++i;
+        }
     }
 }
