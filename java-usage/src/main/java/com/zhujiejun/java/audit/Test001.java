@@ -6,8 +6,8 @@ package com.zhujiejun.java.audit;
 
 /**
  * iconst_1 //Push int constant onto the operand stack
- * istore_1 //Store int into local variable
- * iload_1  //Load int from local variable
+ * istore_1 //Store int into local variable from operand stack and remove the top of stack
+ * iload_1  //Load int from local variable onto the operand stack
  * iinc	    //Increment local variable by constant
  * ---------------------
  * int i = 1;
