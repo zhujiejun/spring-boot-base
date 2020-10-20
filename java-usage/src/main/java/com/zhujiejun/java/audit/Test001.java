@@ -144,6 +144,36 @@ package com.zhujiejun.java.audit;
  * 121: aload         5
  * 123: athrow
  * 124: return
+ *
+ * Exception table:
+ *          from    to  target type
+ *            105   113   116   any
+ *            116   121   116   any
+ *       LineNumberTable:
+ *         line 70: 0
+ *         line 71: 2
+ *         line 74: 7
+ *         line 75: 12
+ *         line 77: 24
+ *         line 78: 49
+ *         line 79: 74
+ *         line 81: 99
+ *         line 82: 105
+ *         line 83: 110
+ *         line 84: 124
+ *       LocalVariableTable:
+ *         Start  Length  Slot  Name   Signature
+ *             0     125     0  args   [Ljava/lang/String;
+ *             2     123     1     i   I
+ *            12     113     2     j   I
+ *            24     101     3     k   I
+ *       StackMapTable: number_of_entries = 2
+ *         frame_type = 255 //full_frame
+ *           offset_delta = 116
+ *           locals = [ class "[Ljava/lang/String;", int, int, int, class java/lang/Object ]
+ *           stack = [ class java/lang/Throwable ]
+ *         frame_type = 250 //chop
+ *           offset_delta = 7
  */
 public class Test001 {
     public static void main(String[] args) {
