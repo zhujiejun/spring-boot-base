@@ -24,14 +24,17 @@ package com.zhujiejun.java.audit;
  * * int i = 1;
  * 0: iconst_1
  * 1: istore_1
+ * <p>
  * * i = i++;
  * 2: iload_1
  * 3: iinc          1, 1
  * 6: istore_1
+ * <p>
  * * int j = i++;
  * 7: iload_1
  * 8: iinc          1, 1
  * 11: istore_2
+ * <p>
  * * int k = i + ++i * i++;
  * 12: iload_1
  * 13: iinc          1, 1
