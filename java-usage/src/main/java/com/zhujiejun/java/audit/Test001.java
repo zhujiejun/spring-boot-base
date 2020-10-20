@@ -10,24 +10,33 @@ package com.zhujiejun.java.audit;
  * i = ++i;
  * 0: iconst_1
  * 1: istore_1
- *
- * 2: iinc       1, 1
+ * <p>
+ * 2: iinc          1, 1
  * 5: iload_1
- *
+ * <p>
  * 6: istore_1
  * 7: return
  * ---------------------
- * int i = 1;
- * i = i++;
+ * * int i = 1;
  * 0: iconst_1
  * 1: istore_1
- *
+ * * i = i++;
  * 2: iload_1
- * 3: iinc       1, 1
- *
+ * 3: iinc          1, 1
  * 6: istore_1
- * 7: return
- *
+ * * int j = i++;
+ * 7: iload_1
+ * 8: iinc          1, 1
+ * 11: istore_2
+ * * int k = i + ++i * i++;
+ * 12: iload_1
+ * 13: iinc          1, 1
+ * 16: iload_1
+ * 17: iload_1
+ * 18: iinc          1, 1
+ * 21: imul
+ * 22: iadd
+ * 23: istore_3
  */
 public class Test001 {
     public static void main(String[] args) {
@@ -40,6 +49,6 @@ public class Test001 {
 
         System.out.println("i = " + i);//i=4
         System.out.println("j = " + j);//j=1
-        System.out.println("k = " + k);//k=11
+        System.out.println("k = " + k);//k=11*/
     }
 }
