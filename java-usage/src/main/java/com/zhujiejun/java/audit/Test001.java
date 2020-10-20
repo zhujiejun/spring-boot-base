@@ -31,9 +31,9 @@ package com.zhujiejun.java.audit;
  */
 public class Test001 {
     public static void main(String[] args) {
-        int i = 1;//i=1
-        i = i++;//i=1
-        //i = ++i;//i=
+        int i = 1; //i=1
+        i = i++;   //i=1
+        //i = ++i; //i=2
 
         int j = i++;//j=1,i=2
         int k = i + ++i * i++; //k=2+3*3=2+9=11,i=3,j=1
