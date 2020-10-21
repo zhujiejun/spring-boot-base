@@ -47,6 +47,9 @@ public class Son extends Father {
      * (09)
      * (08)
      * (07)
+     * <p>
+     * 初始化：静态>实例 父类>子类
+     * 重 写：子类>父类
      *
      * @param args
      */
