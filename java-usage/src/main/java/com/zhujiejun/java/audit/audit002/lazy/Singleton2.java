@@ -1,4 +1,4 @@
-package com.zhujiejun.java.audit.sing.lazy;
+package com.zhujiejun.java.audit.audit002.lazy;
 
 public class Singleton2 {
     private static Singleton2 INSTANCE;

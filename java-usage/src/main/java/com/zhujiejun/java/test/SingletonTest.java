@@ -1,11 +1,11 @@
 package com.zhujiejun.java.test;
 
-import com.zhujiejun.java.audit.sing.hungry.Singleton4;
-import com.zhujiejun.java.audit.sing.hungry.Singleton5;
-import com.zhujiejun.java.audit.sing.hungry.Singleton6;
-import com.zhujiejun.java.audit.sing.lazy.Singleton1;
-import com.zhujiejun.java.audit.sing.lazy.Singleton2;
-import com.zhujiejun.java.audit.sing.lazy.Singleton3;
+import com.zhujiejun.java.audit.audit002.hungry.Singleton4;
+import com.zhujiejun.java.audit.audit002.hungry.Singleton5;
+import com.zhujiejun.java.audit.audit002.hungry.Singleton6;
+import com.zhujiejun.java.audit.audit002.lazy.Singleton1;
+import com.zhujiejun.java.audit.audit002.lazy.Singleton2;
+import com.zhujiejun.java.audit.audit002.lazy.Singleton3;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

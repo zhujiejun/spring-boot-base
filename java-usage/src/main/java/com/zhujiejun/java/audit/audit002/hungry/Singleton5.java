@@ -1,4 +1,4 @@
-package com.zhujiejun.java.audit.sing.hungry;
+package com.zhujiejun.java.audit.audit002.hungry;
 
 public class Singleton5 {
     public static Singleton5 INSTANCE;

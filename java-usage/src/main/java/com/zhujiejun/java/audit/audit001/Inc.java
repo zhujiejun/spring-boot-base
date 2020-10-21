@@ -1,4 +1,4 @@
-package com.zhujiejun.java.audit;
+package com.zhujiejun.java.audit.audit001;
 
 /**
  * ++i i++
@@ -175,7 +175,7 @@ package com.zhujiejun.java.audit;
  *         frame_type = 250 //chop
  *           offset_delta = 7
  */
-public class Test001 {
+public class Inc {
     public static void main(String[] args) {
         int i = 1; //i=1
         i = i++;   //i=1
@@ -188,7 +188,7 @@ public class Test001 {
         System.out.println("j = " + j);//j=1
         System.out.println("k = " + k);//k=11
 
-        synchronized (Test001.class) {
+        synchronized (Inc.class) {
             i = ++i;
         }
     }
