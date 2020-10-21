@@ -47,14 +47,14 @@ public class SingletonTest {
         Singleton5 s10 = Singleton5.INSTANCE;
         System.out.println(s9);
         System.out.println(s10);
-        System.out.printf("s8==s10:%s\n", s9 == s10);
+        System.out.printf("s9==s10:%s\n", s9 == s10);
         System.out.println("------------------");
 
         Singleton6 s11 = Singleton6.INSTANCE;
         Singleton6 s12 = Singleton6.INSTANCE;
         System.out.println(s11);
-        System.out.println(s11);
-        System.out.printf("s11==s11:%s\n", s11 == s12);
+        System.out.println(s12);
+        System.out.printf("s11==s12:%s\n", s11 == s12);
         System.out.println("------------------");
 
         THREAD_POOL.shutdown();
