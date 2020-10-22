@@ -2,5 +2,6 @@
 project(':java-usage') {
     dependencies {
         implementation 'junit:junit:4.13'
+        implementation 'com.google.guava:guava:30.0-jre'
     }
 }
