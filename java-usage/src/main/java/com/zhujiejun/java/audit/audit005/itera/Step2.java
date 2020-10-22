@@ -29,7 +29,7 @@ public class Step2 {
 
     public static void main(String[] args) {
         Stopwatch watch = Stopwatch.createStarted();
-        BigInteger result = itera(new BigInteger("100"));
+        BigInteger result = itera(new BigInteger("1000"));
         System.out.printf("the result is %s\n", result.toString());
         long ms = watch.elapsed(TimeUnit.MILLISECONDS);
         System.out.printf("total time condumption is %d ms\n", ms);
