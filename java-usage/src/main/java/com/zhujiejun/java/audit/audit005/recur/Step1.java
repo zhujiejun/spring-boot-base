@@ -22,6 +22,6 @@ public class Step1 {
         BigInteger result = recur(new BigInteger("100"));
         System.out.printf("the result is %s\n", result.toString());
         long ms = watch.elapsed(TimeUnit.MILLISECONDS);
-        System.out.printf("total time condumption is %d ms\n", ms);
+        System.out.printf("total time condumption is %d ms.\n", ms);
     }
 }
