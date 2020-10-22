@@ -2,23 +2,25 @@ package com.zhujiejun.java.audit.audit005.recur;
 
 import com.google.common.base.Stopwatch;
 
+import java.math.BigInteger;
 import java.util.concurrent.TimeUnit;
 
 public class Step1 {
-    public static int recur(int max) {
-        if (max < 1) {
+    public static BigInteger recur(BigInteger max) {
+        if (max.compareTo(new BigInteger("1")) < 0) {
             throw new IllegalArgumentException("max cloud less than 1");
         }
-        if (max == 1 || max == 2) {
+        if (max.compareTo(new BigInteger("1")) == 0 ||
+                max.compareTo(new BigInteger("2")) == 0) {
             return max;
         }
-        return recur(max - 1) + recur(max - 2);
+        return recur(max.subtract(new BigInteger("1"))).add(recur(max.subtract(new BigInteger("2"))));
     }
 
     public static void main(String[] args) {
         Stopwatch watch = Stopwatch.createStarted();
-        int result = recur(40);
-        System.out.printf("the result is %d\n", result);
+        BigInteger result = recur(new BigInteger("100"));
+        System.out.printf("the result is %s\n", result.toString());
         long ms = watch.elapsed(TimeUnit.MILLISECONDS);
         System.out.printf("total time condumption is %d ms\n", ms);
     }

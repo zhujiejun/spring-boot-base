@@ -2,21 +2,25 @@ package com.zhujiejun.java.audit.audit005.itera;
 
 import com.google.common.base.Stopwatch;
 
+import java.math.BigInteger;
 import java.util.concurrent.TimeUnit;
 
 public class Step2 {
-    public static int itera(int max) {
-        if (max < 1) {
+    public static BigInteger itera(BigInteger max) {
+        if (max.compareTo(new BigInteger("1")) < 0) {
             throw new IllegalArgumentException("max cloud less than 1");
         }
-        if (max == 1 || max == 2) {
+        if (max.compareTo(new BigInteger("1")) == 0 ||
+                max.compareTo(new BigInteger("2")) == 0) {
             return max;
         }
-        int two = 1;
-        int one = 2;
-        int sum = 0;
-        for (int i = 3; i <= max; ++i) {
-            sum = one + two;
+        BigInteger two = new BigInteger("1");
+        BigInteger one = new BigInteger("2");
+        BigInteger sum = new BigInteger("0");
+        for (BigInteger i = new BigInteger("3");
+             i.compareTo(new BigInteger(max.toString())) < 1;
+             i = i.add(new BigInteger("1"))) {
+            sum = one.add(two);
             two = one;
             one = sum;
         }
@@ -25,8 +29,8 @@ public class Step2 {
 
     public static void main(String[] args) {
         Stopwatch watch = Stopwatch.createStarted();
-        int result = itera(100);
-        System.out.printf("the result is %d\n", result);
+        BigInteger result = itera(new BigInteger("100"));
+        System.out.printf("the result is %s\n", result.toString());
         long ms = watch.elapsed(TimeUnit.MILLISECONDS);
         System.out.printf("total time condumption is %d ms\n", ms);
     }
