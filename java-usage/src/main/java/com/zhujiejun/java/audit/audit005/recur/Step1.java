@@ -19,9 +19,9 @@ public class Step1 {
 
     public static void main(String[] args) {
         Stopwatch watch = Stopwatch.createStarted();
-        BigInteger result = recur(new BigInteger("100"));
+        BigInteger result = recur(new BigInteger("1000"));
         System.out.printf("the result is %s\n", result.toString());
         long ms = watch.elapsed(TimeUnit.MILLISECONDS);
-        System.out.printf("total time condumption is %d ms.\n", ms);
+        System.out.printf("total time consumption is %d ms.\n", ms);
     }
 }
