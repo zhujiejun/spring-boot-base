@@ -2,7 +2,11 @@ package com.zhujiejun.java.audit.audit005.itera;
 
 import com.google.common.base.Stopwatch;
 
+import java.io.PrintStream;
 import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
 public class Step2 {
@@ -27,11 +31,15 @@ public class Step2 {
         return sum;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        Path path = Paths.get("/home/cat/Downloads/tmp/step.tmp");
+        if (Files.notExists(path)) Files.createFile(path);
+        System.setOut(new PrintStream(path.toFile()));
         Stopwatch watch = Stopwatch.createStarted();
-        BigInteger result = itera(new BigInteger("10000"));
+        BigInteger result = itera(new BigInteger("1234"));
         System.out.printf("the result is %s\n", result.toString());
+        long ss = watch.elapsed(TimeUnit.SECONDS);
         long ms = watch.elapsed(TimeUnit.MILLISECONDS);
-        System.out.printf("total time consumption is %d ms.\n", ms);
+        System.out.printf("total time consumption is %d s and %d ms.\n", ss, ms - ss * 1000);
     }
 }
