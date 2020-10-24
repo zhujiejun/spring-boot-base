@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/msg")
-public class Con005 {
+public class Ctr005 {
     @RequestMapping("/hello")
     public String show() {
         return "World!\n";
