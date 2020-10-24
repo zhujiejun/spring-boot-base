@@ -2,3 +2,8 @@ server:
   port: 10005
   servlet:
     context-path: /app5
+spring:
+  mvc:
+    view:
+      prefix: pre
+      suffix: suf
