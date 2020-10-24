@@ -1,0 +1,7 @@
+//spring mvc base usage
+project(':service-005') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+}
+mainClassName = 'com.zhujiejun.spring.App005'
