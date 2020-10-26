@@ -1,0 +1,8 @@
+//java base usage
+project(':java-usage') {
+    dependencies {
+        implementation 'org.apache.commons:commons-lang3:3.10'
+        implementation 'org.apache.tubemq:tubemq-core:0.6.0-incubating'
+        implementation 'org.apache.tubemq:tubemq-client:0.6.0-incubating'
+    }
+}
