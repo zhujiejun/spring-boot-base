@@ -1,4 +1,4 @@
-package com.zhujiejun.java.pattern.singleton;
+package com.zhujiejun.java.pat.singleton;
 
 //
 public final class Singleton000 {

@@ -1,4 +1,4 @@
-package com.zhujiejun.java.pattern.singleton;
+package com.zhujiejun.java.pat.singleton;
 
 public final class Singleton001 {
     private byte[] data = new byte[1024];

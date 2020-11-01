@@ -1,4 +1,4 @@
-package com.zhujiejun.java.pattern;
+package com.zhujiejun.java.pat;
 
 interface Target {
     public void request();
