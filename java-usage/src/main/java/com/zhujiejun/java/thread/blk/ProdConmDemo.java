@@ -27,15 +27,14 @@ class ShareResource {
 
     public void produce() throws Exception {
         while (FLAG) {
-            boolean isOffered = QUEUE.offer(String.valueOf(atomicInteger.getAndIncrement()), 2, TimeUnit.SECONDS);
+            String data = String.valueOf(atomicInteger.getAndIncrement());
+            boolean isOffered = QUEUE.offer(data, 2, TimeUnit.SECONDS);
             if (isOffered) {
-                //System.out.println(Thread.currentThread().getName() + "\t" + "produce data [" + atomicInteger.toString() + "] success!");
                 show("produce", "success");
             } else {
-                //System.out.println(Thread.currentThread().getName() + "\t" + "produce data [" + atomicInteger.toString() + "] failure!");
                 show("produce", "failure");
             }
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(100);
         }
         System.out.println(Thread.currentThread().getName() + "\t" + "stoping for produce....");
     }
@@ -44,10 +43,8 @@ class ShareResource {
         while (FLAG) {
             String result = QUEUE.poll(2, TimeUnit.SECONDS);
             if (StringUtils.isNotBlank(result)) {
-                //System.out.println(Thread.currentThread().getName() + "\t" + "consume data [" + atomicInteger.toString() + "] success!\n");
                 show("consume", "success\n");
             } else {
-                //System.out.println(Thread.currentThread().getName() + "\t" + "consume data [" + atomicInteger.toString() + "] failure!\n");
                 show("consume", "failure\n");
                 FLAG = false;
                 return;
