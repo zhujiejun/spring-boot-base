@@ -1,4 +1,4 @@
-package com.zhujiejun.java.disruptor.trade;
+package com.zhujiejun.java.disrp.trade;
 
 import com.lmax.disruptor.EventTranslator;
 

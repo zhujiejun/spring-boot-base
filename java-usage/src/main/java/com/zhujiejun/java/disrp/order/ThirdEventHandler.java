@@ -1,4 +1,4 @@
-package com.zhujiejun.java.disruptor.order;
+package com.zhujiejun.java.disrp.order;
 
 import com.lmax.disruptor.EventHandler;
 

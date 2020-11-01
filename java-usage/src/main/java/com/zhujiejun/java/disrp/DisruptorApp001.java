@@ -1,4 +1,4 @@
-package com.zhujiejun.java.disruptor;
+package com.zhujiejun.java.disrp;
 
 import com.google.common.base.Stopwatch;
 import com.lmax.disruptor.BlockingWaitStrategy;
