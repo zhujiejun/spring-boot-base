@@ -1,6 +1,7 @@
 //spring framework usage
 project(':spring-usage') {
     dependencies {
-        implementation 'junit:junit:4.13'
+        implementation 'junit:junit:4.12'
+        implementation 'com.google.guava:guava:30.0-jre'
     }
 }
