@@ -21,7 +21,7 @@ public class JNIDemo {
     public static native long hello(int max);
 
     public static void main(String[] args) throws Exception {
-        Path path = Paths.get(System.getProperty("jni.save.path"));
+        Path path = Paths.get(System.getProperty("java.jni.out.path"));
         if (Files.notExists(path)) Files.createFile(path);
         System.setOut(new PrintStream(path.toFile()));
         Properties properties = System.getProperties();
