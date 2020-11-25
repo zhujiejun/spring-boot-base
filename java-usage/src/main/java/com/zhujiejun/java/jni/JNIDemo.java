@@ -8,6 +8,7 @@ import java.util.Properties;
 import java.util.TreeMap;
 
 /**
+ * JNI DAYA TYPE
  * JVM System Args
  * JVM Bootstrapt Args
  * -Djava.library.path=/opt/workspace/java/spring-boot-base/java-usage/lib
