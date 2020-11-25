@@ -18,12 +18,10 @@ public class JNIDemo {
         System.loadLibrary("jni-base");
     }
 
-    private final static String PATH = "/home/cat/Downloads/tmp/JNIDemo.tmp";
-
     public static native long hello(int max);
 
     public static void main(String[] args) throws Exception {
-        Path path = Paths.get(PATH);
+        Path path = Paths.get(System.getProperty("jni.save.path"));
         if (Files.notExists(path)) Files.createFile(path);
         System.setOut(new PrintStream(path.toFile()));
         Properties properties = System.getProperties();
