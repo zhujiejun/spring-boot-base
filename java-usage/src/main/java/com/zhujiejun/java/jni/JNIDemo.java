@@ -7,11 +7,13 @@ import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.TreeMap;
 
+/**
+ * JVM System Args
+ * JVM Bootstrapt Args
+ * -Djava.library.path=/opt/workspace/java/spring-boot-base/java-usage/lib
+ */
 public class JNIDemo {
     static {
-        //JVM System Args
-        //JVM Bootstrapt Args
-        //-Djava.library.path=/opt/workspace/java/spring-boot-base/java-usage/lib
         System.loadLibrary("jni-base");
     }
 
