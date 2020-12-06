@@ -14,6 +14,11 @@ echo -n 'input the module(000 001 002 003 ...):'; read mod;
 
 if [[ -z $act ]]; then
 	./gradlew -q clean;
+elif [[ -z $mod ]]; then
+	for j in 000 001 002 003 004 010 011
+	do
+		./gradlew -q -x test :service-$j:$act;
+	done
 else 
 	for i in $mod
 	do
