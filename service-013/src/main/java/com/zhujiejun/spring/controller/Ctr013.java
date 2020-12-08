@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Ctr013 {
     @RequestMapping("/msg")
     public String msg() {
-        return "Hello,World!\n";
+        String prefix = System.getProperty("prefix");
+        return String.format("%s.Hello,World!\n", prefix);
     }
 }

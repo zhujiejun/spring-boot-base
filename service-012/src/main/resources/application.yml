@@ -8,12 +8,19 @@ spring:
   cloud:
     zookeeper:
       prefix: sfb-service
+      discovery:
+        instance-host: 192.168.100.100
       connect-string: node101:2181
     gateway:
       routes:
         - id: service-013
+          order: 1001
+          uri: http://192.168.100.100:12013
+          predicates:
+            - Path=/service/service-013/msg
+        - id: service-014
           order: 1000
-          uri: http://localhost:12013
+          uri: http://192.168.100.100:12014
           predicates:
             - Path=/service/service-013/msg
   config:

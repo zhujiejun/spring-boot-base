@@ -1,10 +1,10 @@
 server:
-  port: 12013
+  port: 12014
   servlet:
-    context-path: /service
+    context-path: /load
 spring:
   application:
-    name: service-013
+    name: service-014
   cloud:
     zookeeper:
       prefix: sfb-service

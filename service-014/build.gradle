@@ -1,8 +1,9 @@
-//spring cloud zokper servive
-project(':service-013') {
+//spring cloud load balancer
+project(':service-014') {
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
         implementation 'org.springframework.cloud:spring-cloud-starter-zookeeper-discovery'
     }
 }
-mainClassName = 'com.zhujiejun.spring.App013'
+mainClassName = 'com.zhujiejun.spring.App014'
