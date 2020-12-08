@@ -1,0 +1,13 @@
+server:
+  port: 12013
+  servlet:
+    context-path: /service
+spring:
+  application:
+    name: service-013
+  cloud:
+    zookeeper:
+      connect-string: node101:2181
+  config:
+    activate:
+      on-profile: dev

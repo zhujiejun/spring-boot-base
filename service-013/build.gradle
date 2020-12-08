@@ -1,0 +1,8 @@
+//spring cloud zokper servive01
+project(':service-013') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.cloud:spring-cloud-starter-zookeeper-discovery'
+    }
+}
+mainClassName = 'com.zhujiejun.spring.App013'
