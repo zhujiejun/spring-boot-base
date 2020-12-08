@@ -9,8 +9,8 @@ spring:
     gateway:
       routes:
         - id: service-013
-          order: 1001
-          uri: http://localhost:12013
+          order: 1000
+          uri: http://node101:12013
           predicates:
             - Path=/service/service-013/msg
     zookeeper:
