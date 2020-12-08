@@ -12,4 +12,7 @@ include 'java-usage', 'spring-usage', 'service-000',
         'service-001', 'service-002',
         'service-003', 'service-004',
         'service-005', 'service-006',
-        'service-010', 'service-011'
+        'service-007', 'service-008',
+        'service-009', 'service-010',
+        'service-011', 'service-012',
+        'service-013', 'service-014'
