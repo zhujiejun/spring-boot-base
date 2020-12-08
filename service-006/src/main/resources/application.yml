@@ -1,0 +1,24 @@
+server:
+  port: 12006
+#  servlet:
+#    context-path: /gateway
+spring:
+  profiles: dev
+  application:
+    name: service-006
+  cloud:
+    gateway:
+      routes:
+        - id: service-004
+          order: 1001
+          uri: http://localhost:12004
+          predicates:
+            - Path=/service/service-004/msg
+eureka:
+  instance:
+    hostname: redhat
+    appname: service-006
+  client:
+    service-url:
+      defaultZone: http://localhost:12003/eureka
+#http://localhost:12006/service/service-004/msg

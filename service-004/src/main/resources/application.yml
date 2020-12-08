@@ -5,7 +5,7 @@ spring:
 server:
   port: 12004
   servlet:
-    context-path: /client
+    context-path: /service
 eureka:
   instance:
     hostname: redhat

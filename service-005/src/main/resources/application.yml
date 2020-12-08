@@ -1,0 +1,15 @@
+server:
+  port: 12005
+  servlet:
+    context-path: /client
+spring:
+  profiles: dev
+  application:
+    name: service-005
+eureka:
+  instance:
+    hostname: redhat
+    appname: service-005
+  client:
+    service-url:
+      defaultZone: http://localhost:12003/eureka

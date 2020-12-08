@@ -1,0 +1,9 @@
+//spring cloud gateway module
+project(':service-006') {
+    dependencies {
+        //implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    }
+}
+mainClassName = 'com.zhujiejun.spring.App006'
