@@ -28,9 +28,10 @@ public class Ctr013 {
     @GetMapping("/greeting")
     public String greet() {
         log.info("Access /greeting");
+        String prefix = System.getProperty("prefix");
         List<String> greetings = Arrays.asList("Hi there", "Greetings", "Salutations");
         Random rand = new Random();
         int randomNum = rand.nextInt(greetings.size());
-        return greetings.get(randomNum);
+        return String.format("%s: %s", prefix, greetings.get(randomNum));
     }
 }

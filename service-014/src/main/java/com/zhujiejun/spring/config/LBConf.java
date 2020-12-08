@@ -16,7 +16,7 @@ public class LBConf {
     @Bean
     @Primary
     ServiceInstanceListSupplier serviceInstanceListSupplier() {
-        return new DefaultServiceInstanceListSuppler("say-hello");
+        return new DefaultServiceInstanceListSuppler("service-013");
     }
 }
 
@@ -36,8 +36,8 @@ class DefaultServiceInstanceListSuppler implements ServiceInstanceListSupplier {
     @Override
     public Flux<List<ServiceInstance>> get() {
         return Flux.just(Arrays.asList(
-                new DefaultServiceInstance(serviceId + "1", serviceId, "localhost", 8090, false),
-                new DefaultServiceInstance(serviceId + "2", serviceId, "localhost", 9092, false),
-                new DefaultServiceInstance(serviceId + "3", serviceId, "localhost", 9999, false)));
+                new DefaultServiceInstance(serviceId + "1", serviceId, "localhost", 12013, false),
+                new DefaultServiceInstance(serviceId + "2", serviceId, "localhost", 22013, false),
+                new DefaultServiceInstance(serviceId + "3", serviceId, "localhost", 32013, false)));
     }
 }

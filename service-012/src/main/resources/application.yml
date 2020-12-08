@@ -18,9 +18,14 @@ spring:
           uri: http://192.168.100.100:12013
           predicates:
             - Path=/service/service-013/msg
-        - id: service-014
-          order: 1000
-          uri: http://192.168.100.100:12014
+        - id: service-013
+          order: 1002
+          uri: http://192.168.100.100:22013
+          predicates:
+            - Path=/service/service-013/msg
+        - id: service-013
+          order: 1003
+          uri: http://192.168.100.100:32013
           predicates:
             - Path=/service/service-013/msg
   config:
