@@ -9,13 +9,13 @@ imageName='--imageName=registry.cn-shenzhen.aliyuncs.com/zhujiejun/service-'
 #echo "12345678" | sudo -S docker pull paketobuildpacks/run:full-cnb;
 #echo "12345678" | sudo -S docker pull paketobuildpacks/builder:full;
 
-echo -n 'input the act(clean build bootJar bootBuildImage DistTar):'; read act;
-echo -n 'input the module(000 001 002 003 ...):'; read mod;
+echo -n 'input the act(clean build bootJar bootBuildImage DistTar idea):'; read act;
+echo -n 'input the module(000 001 002 003 004 005 006 007 008 009 010 ):'; read mod;
 
 if [[ -z $act ]]; then
 	./gradlew -q clean;
 elif [[ -z $mod ]]; then
-	for j in 000 001 002 003 004 005 010 011
+	for j in 000 001 002 003 004 005 010 011 012 013 014
 	do
 		./gradlew -q -x test :service-$j:$act;
 	done

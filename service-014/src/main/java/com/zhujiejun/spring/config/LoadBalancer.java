@@ -3,6 +3,9 @@ package com.zhujiejun.spring.config;
 import org.springframework.cloud.client.DefaultServiceInstance;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.loadbalancer.core.ServiceInstanceListSupplier;
+import org.springframework.cloud.loadbalancer.support.ServiceInstanceListSuppliers;
+import org.springframework.cloud.zookeeper.discovery.ZookeeperServiceInstanceListSupplier;
+import org.springframework.cloud.zookeeper.discovery.dependency.ZookeeperDependencies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -12,16 +15,16 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-public class LBConf {
+public class LoadBalancer {
     @Bean
     @Primary
-    ServiceInstanceListSupplier serviceInstanceListSupplier() {
-        return new DefaultServiceInstanceListSuppler("service-013");
+    public ServiceInstanceListSupplier defaultServiceInstanceListSupplier() {
+        return new ZookeeperServiceInstanceListSupplier(ServiceInstanceListSuppliers.from("service-013"),
+                new ZookeeperDependencies());
     }
 }
 
 class DefaultServiceInstanceListSuppler implements ServiceInstanceListSupplier {
-
     private final String serviceId;
 
     DefaultServiceInstanceListSuppler(String serviceId) {

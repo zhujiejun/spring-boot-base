@@ -5,12 +5,12 @@ server:
 spring:
   application:
     name: service-013
+  config:
+    activate:
+      on-profile: dev
   cloud:
     zookeeper:
       prefix: sfb-service
       discovery:
         instance-host: 192.168.100.100
       connect-string: node101:2181
-  config:
-    activate:
-      on-profile: dev

@@ -13,8 +13,8 @@ public class Ctr014 {
     private final WebClient.Builder lbWebClientBuilder;
     private final ReactorLoadBalancerExchangeFilterFunction lbFunction;
 
-    public Ctr014(WebClient.Builder webClientBuilder, ReactorLoadBalancerExchangeFilterFunction lbFunction) {
-        this.lbWebClientBuilder = webClientBuilder;
+    public Ctr014(WebClient.Builder lbWebClientBuilder, ReactorLoadBalancerExchangeFilterFunction lbFunction) {
+        this.lbWebClientBuilder = lbWebClientBuilder;
         this.lbFunction = lbFunction;
     }
 
