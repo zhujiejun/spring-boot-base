@@ -8,6 +8,6 @@ import org.springframework.cloud.zookeeper.discovery.watcher.DependencyWatcherLi
 public class Lsn014 implements DependencyWatcherListener {
     @Override
     public void stateChanged(String dependencyName, DependencyState newState) {
-        log.info("----------the dependency name and dependency state are {}, {}----------", dependencyName, newState);
+        log.info("----------the dependency name and state are {}, {}----------", dependencyName, newState);
     }
 }
