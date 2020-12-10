@@ -11,6 +11,6 @@ spring:
   cloud:
     zookeeper:
       prefix: sfb-service
+      connect-string: node101:2181
       discovery:
         instance-host: 192.168.100.100
-      connect-string: node101:2181

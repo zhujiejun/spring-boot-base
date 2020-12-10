@@ -11,8 +11,17 @@ spring:
   cloud:
     zookeeper:
       prefix: sfb-service
+      connect-string: node101:2181
       discovery:
         instance-host: 192.168.100.100
-      connect-string: node101:2181
+      dependencies:
+        service-013:
+          path: /service-013
+          loadBalancerType: ROUND_ROBIN
+          contentTypeTemplate: application/vnd.service-013.$version+json
+          version: v1
+          required: true
+          #/services/sfb-service/service-013
+          #/sfb-service/services/sfb-service/service-013
     loadbalancer:
       zone: node101:2181
