@@ -1,0 +1,9 @@
+//spring cloud zokper config
+project(':service-015') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-webflux'
+        implementation 'org.springframework.cloud:spring-cloud-starter-zookeeper-config'
+        implementation 'org.springframework.cloud:spring-cloud-starter-zookeeper-discovery'
+    }
+}
+mainClassName = 'com.zhujiejun.spring.App015'

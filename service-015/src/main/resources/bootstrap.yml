@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    zookeeper:
+      config:
+        root: /sfb-config
+        enabled: true
+        defaultContext: apps
+        profileSeparator: ':'
+
+#/sfb-config/service-015:dev=k1=v1
+#/sfb-config/service-015:dev=k2=v2
+#/sfb-config/service-015:dev=k3=v3

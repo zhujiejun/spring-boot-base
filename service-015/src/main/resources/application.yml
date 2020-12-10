@@ -1,0 +1,18 @@
+server:
+  port: 12015
+  servlet:
+    context-path: /config
+spring:
+  application:
+    name: service-015
+  config:
+    activate:
+      on-profile: dev
+  cloud:
+    zookeeper:
+      prefix: sfb-service
+      connect-string: node101:2181, node102:2181, node103:2181
+      discovery:
+        instance-host: 192.168.100.100
+    loadbalancer:
+      zone: node101:2181
