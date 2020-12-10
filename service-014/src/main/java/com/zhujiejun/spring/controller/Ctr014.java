@@ -32,6 +32,6 @@ public class Ctr014 {
                 .filter(lbFunction)
                 .build().get().uri("http://service-013/service/service-013/greeting")
                 .retrieve().bodyToMono(String.class)
-                .map(greeting -> String.format("%s, %s!\n", greeting, name));
+                .map(greeting -> String.format("%s %s!\n", greeting, name));
     }
 }

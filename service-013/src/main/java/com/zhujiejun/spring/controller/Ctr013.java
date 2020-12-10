@@ -29,9 +29,11 @@ public class Ctr013 {
     public String greet() {
         log.info("Access /greeting");
         String prefix = System.getProperty("prefix");
-        List<String> greetings = Arrays.asList("Hi there", "Greetings", "Salutations");
+        List<String> grils = Arrays.asList("Wangying", "Pangyao", "Wangpiao", "Yangying");
+        List<String> actions = Arrays.asList("love", "hate", "belive", "marry");
         Random rand = new Random();
-        int randomNum = rand.nextInt(greetings.size());
-        return String.format("%s: %s", prefix, greetings.get(randomNum));
+        int randomNum1 = rand.nextInt(grils.size());
+        int randomNum2 = rand.nextInt(actions.size());
+        return String.format("%s: %s %s", prefix, grils.get(randomNum1), actions.get(randomNum2));
     }
 }
