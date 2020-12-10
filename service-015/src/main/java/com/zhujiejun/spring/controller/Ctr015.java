@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("service-015")
+@RequestMapping("/service-015")
 public class Ctr015 {
     @Value("${k1}")
     private String v1;
