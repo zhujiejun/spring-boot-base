@@ -8,7 +8,6 @@ import org.springframework.cloud.loadbalancer.support.ServiceInstanceListSupplie
 import org.springframework.cloud.zookeeper.discovery.ZookeeperServiceInstanceListSupplier;
 import org.springframework.cloud.zookeeper.discovery.dependency.ZookeeperDependencies;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
@@ -16,7 +15,7 @@ import reactor.core.publisher.Flux;
 import java.util.Arrays;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class Conf014 {
     @Bean
     @LoadBalanced

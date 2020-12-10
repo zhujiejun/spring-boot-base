@@ -18,7 +18,7 @@ public class Ctr014 {
         this.lbFunction = lbFunction;
     }
 
-    @RequestMapping("/hi")
+    @RequestMapping("/hi") //need config WebClient.Builder bean
     public Mono<String> hi(@RequestParam(value = "name", defaultValue = "Mary") String name) {
         return lbWebClientBuilder
                 .build().get().uri("http://service-013/service/service-013/greeting")
@@ -26,7 +26,7 @@ public class Ctr014 {
                 .map(greeting -> String.format("%s, %s!\n", greeting, name));
     }
 
-    @RequestMapping("/hello")
+    @RequestMapping("/hello") //not need config WebClient.Builder bean
     public Mono<String> hello(@RequestParam(value = "name", defaultValue = "John") String name) {
         return WebClient.builder()
                 .filter(lbFunction)
