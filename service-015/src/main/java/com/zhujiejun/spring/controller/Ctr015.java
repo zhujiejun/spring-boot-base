@@ -1,5 +1,6 @@
 package com.zhujiejun.spring.controller;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.env.Environment;
@@ -21,7 +22,9 @@ public class Ctr015 {
 
     @RequestMapping("/get/{key}")
     public String get(@PathVariable("key") String key) {
-        return environment.getProperty(key);
+        String value = environment.getProperty(key);
+        value = StringUtils.isBlank(value) ? StringUtils.EMPTY.concat("\n") : value.concat("\n");
+        return value;
     }
 
     @RequestMapping("/datasource")
