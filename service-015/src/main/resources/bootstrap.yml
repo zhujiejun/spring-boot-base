@@ -1,13 +1,14 @@
-#/sfb-config/service-015:dev=k1=v1
-#/sfb-config/service-015:dev=k2=v2
-#/sfb-config/service-015:dev=k3=v3
-#spring.cloud.zookeeper.config.enabled=true
-#spring.cloud.zookeeper.config.root=sfb-config
+#create /sfb-config/service-015:dev/spring.datasource.username root
+#create /sfb-config/service-015:dev/spring.datasource.password 12345678
+#create /sfb-config/service-015:dev/spring.datasource.driver-class-name com.mysql.jdbc.Driver
+#create /sfb-config/service-015:dev/spring.datasource.url jdbc:mysql://192.168.100.101:3306/sfb_base
 spring:
   cloud:
     zookeeper:
       config:
         enabled: true
-        root: /sfb-config
-        name: service-015
+        root: sfb-config
         profileSeparator: ':'
+        defaultContext: service-015
+        watcher:
+          enabled: true
