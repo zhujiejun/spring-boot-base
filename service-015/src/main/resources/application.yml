@@ -3,6 +3,8 @@ server:
   servlet:
     context-path: /config
 spring:
+  banner:
+    location: banner.txt
   application:
     name: service-015
   config:
@@ -15,4 +17,4 @@ spring:
       discovery:
         instance-host: 192.168.100.100
     loadbalancer:
-      zone: node101:2181
+      zone: node101:2181, node102:2181, node103:2181

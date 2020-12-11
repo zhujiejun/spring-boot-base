@@ -8,6 +8,6 @@ spring:
     zookeeper:
       config:
         enabled: true
-        root: sfb-config
+        root: /sfb-config
         name: service-015
         profileSeparator: ':'
