@@ -15,7 +15,7 @@ echo -n 'input the module(000 001 002 003 004 005 006 007 008 009 010 ):'; read 
 if [[ -z $act ]]; then
 	./gradlew -q clean;
 elif [[ -z $mod ]]; then
-	for j in 000 001 002 003 004 005 010 011 012 013 014
+	for j in 000 001 002 003 004 005 010 011 012 013 014 015
 	do
 		./gradlew -q -x test :service-$j:$act;
 	done

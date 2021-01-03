@@ -8,12 +8,23 @@
  */
 
 rootProject.name = 'spring-boot-base'
-include 'java-usage', 'spring-usage', 'service-000',
-        'service-001', 'service-002',
-        'service-003', 'service-004',
-        'service-005', 'service-006',
-        'service-007', 'service-008',
-        'service-009', 'service-010',
-        'service-011', 'service-012',
-        'service-013', 'service-014',
-        'service-015', 'service-016'
+include 'java-usage'
+include 'spring-usage'
+include 'service-000'
+include 'service-001'
+include 'service-002'
+include 'service-003'
+include 'service-004'
+include 'service-005'
+include 'service-006'
+include 'service-007'
+include 'service-008'
+include 'service-009'
+include 'service-010'
+include 'service-011'
+include 'service-012'
+include 'service-013'
+include 'service-014'
+include 'service-015'
+include 'service-016'
+include 'service-017'
